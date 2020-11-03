@@ -4,6 +4,7 @@ public class Start
 {
 	public static void main(String[] args)
 	{
-		System.out.println("Hii!");
+		Test test = new Test();
+		test.setVisible(true);
 	}
 }
