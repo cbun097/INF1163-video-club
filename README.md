@@ -8,6 +8,6 @@ Projet finale pour INF1163 - Projet video club
 
 ## Membres de l'équipe:
  - Claire Bun
- - Jacobe Johnston
+ - Jacob Johnston
  - Anthony Whelan
  - Alexandre Belanger
