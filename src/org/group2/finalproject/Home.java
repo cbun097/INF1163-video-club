@@ -3,12 +3,10 @@ package org.group2.finalproject;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-
 import java.awt.event.ActionListener;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+
 
 public class Home extends JPanel{
 	
@@ -17,12 +15,12 @@ public class Home extends JPanel{
 	JButton locationBtn;
 	JTable table_1;
 	JScrollPane sp;
-
 	/**
 	 * Create the this.
 	 */
 	public Home() 
 	{
+		System.out.println(jo.toString());
 		this.setBounds(0,0,800,800);  
         
         ClientBtn = new JButton("Clients");
