@@ -20,7 +20,6 @@ public class Home extends JPanel{
 	 */
 	public Home() 
 	{
-		System.out.println(jo.toString());
 		this.setBounds(0,0,800,800);  
         
         ClientBtn = new JButton("Clients");
