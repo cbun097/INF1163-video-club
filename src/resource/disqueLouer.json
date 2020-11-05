@@ -1,0 +1,27 @@
+[
+    {
+        "DisqueLouer": [
+            {
+                "CodeClient": "",
+                "CodeDisque": "",
+                "DateLouer": "",
+                "DateRetour": "",
+                "DateDu": ""
+            },
+            {
+                "CodeClient": "",
+                "CodeDisque": "",
+                "DateLouer": "",
+                "DateRetour": "",
+                "DateDu": ""
+            },
+            {
+                "CodeClient": "",
+                "CodeDisque": "",
+                "DateLouer": "",
+                "DateRetour": "",
+                "DateDu": ""
+            }
+        ]
+    }
+]

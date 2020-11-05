@@ -51,7 +51,6 @@ public class Home extends JPanel{
 		});
 		this.add(locationBtn);
 		
-		// Does not show up
 		String data[][]={ {"101","Amit","670000"},    
                 {"102","Jai","780000"},    
                 {"101","Sachin","700000"}};    
@@ -60,7 +59,5 @@ public class Home extends JPanel{
         sp  = new JScrollPane(table_1);
         sp.setBounds(50, 172, 492, 275);
         this.add(sp);
-		//f.getContentPane().setLayout(null);    
-		
 	}
 }

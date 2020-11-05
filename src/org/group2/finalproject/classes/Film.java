@@ -23,7 +23,8 @@ public class Film {
 	double prixJournee;
 	// manque les acteurs
 	
-	public Film(String codeFilm, String nom, String genre, Date dateSortie, String desription, Boolean estNouveau,
+	
+	/**public Film(String codeFilm, String nom, String genre, Date dateSortie, String desription, Boolean estNouveau,
 			String duree, String pays, String affiche, String director, String scenariste, String scenario,
 			int quantiteDVD, int quantiteBluray, double prixVente, double prixSemaine, double prixJournee) {
 		super();
@@ -44,6 +45,12 @@ public class Film {
 		this.prixVente = prixVente;
 		this.prixSemaine = prixSemaine;
 		this.prixJournee = prixJournee;
+	}*/
+	
+	// new contructor for testing purposes only
+	public Film(String codeFilm, String nom) {
+		this.codeFilm = codeFilm;
+		this.nom = nom;
 	}
 
 	public String getCodeFilm() {
