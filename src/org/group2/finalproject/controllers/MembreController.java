@@ -1,4 +1,4 @@
-package org.group2.finalproject.classes.controllers;
+package org.group2.finalproject.controllers;
 
 public class MembreController {
 
