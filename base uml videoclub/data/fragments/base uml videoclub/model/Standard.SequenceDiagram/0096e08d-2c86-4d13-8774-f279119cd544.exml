@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Interaction Sequence diagram" version="4">
+  <OBJECT>
+    <ID name="Interaction Sequence diagram" mc="Standard.SequenceDiagram" uid="0096e08d-2c86-4d13-8774-f279119cd544"/>
+    <PID name="Interaction" mc="Standard.Interaction" uid="3687469f-00ce-4666-af7b-c94545266c0e"/>
+    <ATTRIBUTES>
+      <ATT name="UiDataVersion">1</ATT>
+      <ATT name="UiData"><![CDATA[eJztU1FPwjAQ/ivN3ikDpkACGGWGGKcYUBOfyLGeWO1abIuyf2/nAAXDgoboi09tvt539931u9bRPBHkBbXhSra9CvU9ctRp9cePGFvCmYM8YtMptj2lJzRRDAVXlHGYaEgoMm6VpgafZyhjpCgwQWnNClkG9pLhAglzxCMJPCo9WpX2vU7rSqspapsSCYmrKCBVMxuCBfd2C2KGCylyJoRX7rTKS8IX6tCmAr21RqpFjZgs3tBYaaQ5dwd9XTAxMGTLYqdzO8D7HatcuhQLJsG5DcdnTuP7Nbtc5ExSo/ONRst5S0XNaxRgkTktG3O7yCDykiHZiEAy0Ixu/Azx/eYh+g1WqsaNw1LAKrVSo14PSvfVerNSacbsIAiKpy/A2HOpXmUEYxQbIoZWczlxYPkdLWxECTyTXZVMleHWfcPPU3UfuGAaswwRN9n4FsdWRsTlk9k9/GQSanh1ciJIUa9br1a4Q8udYTnfUJFlcCuzlvB39uV7rD83GmdbHBH2aHR8dzoYnRx3z3uD/s1luB+T7LB+n7/tw0Cf7BD82+Gv7HDdv9q3D7Y+vQGKHI2g]]></ATT>
+      <ATT name="PreviewData"><![CDATA[data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAIAAAAmdTLBAAAAGElEQVR4nGP4TxlgGNU/qn9U/6j+EaofAB8cJiE1IQRUAAAAAElFTkSuQmCC]]></ATT>
+      <ATT name="Name"><![CDATA[Interaction Sequence diagram]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="20fd47f7-6f35-4abe-b5ed-4309ccafd2cb"/>
+          <ATTRIBUTES>
+            <ATT name="Content"></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="base uml videoclub" version="4">
+  <OBJECT>
+    <ID name="base uml videoclub" mc="Infrastructure.DiagramSet" uid="216f314e-af50-44a4-84c1-20bb796bc2a2"/>
+    <PID name="base uml videoclub" mc="Standard.Project" uid="5b5c53b4-1825-4bb7-93d7-324d1fd3c2bc"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[base uml videoclub]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

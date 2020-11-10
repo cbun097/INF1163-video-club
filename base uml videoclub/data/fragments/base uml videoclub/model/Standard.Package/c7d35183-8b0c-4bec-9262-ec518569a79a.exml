@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Model" version="4">
+  <OBJECT>
+    <ID name="Model" mc="Standard.Package" uid="c7d35183-8b0c-4bec-9262-ec518569a79a"/>
+    <PID name="base uml videoclub" mc="Standard.Project" uid="5b5c53b4-1825-4bb7-93d7-324d1fd3c2bc"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Model]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Gérant" mc="Standard.Actor" uid="f4c6c2b0-c29d-443e-b8b8-20ec9a982beb"/>
+        <COMPID name="Gestion de nouveau film" mc="Standard.UseCase" uid="ed651976-bd40-44d7-b68b-c43e88c09011"/>
+        <COMPID name="Employer" mc="Standard.Actor" uid="a90f8814-3707-4538-bebb-6ce975fd4c02"/>
+        <COMPID name="libérer les film" mc="Standard.UseCase" uid="e25ad722-f4e8-4fce-b944-a3b750392e07"/>
+        <COMPID name="organizer les film" mc="Standard.UseCase" uid="28720045-aa9f-42a4-b98c-0f0b6c0b5f02"/>
+        <COMPID name="membre" mc="Standard.Actor" uid="0cb8241f-4c0b-4b88-a760-76662abbd93b"/>
+        <COMPID name="client" mc="Standard.Actor" uid="baa81fce-474d-4e82-a74e-7e526a8a52bd"/>
+        <COMPID name="louer des film" mc="Standard.UseCase" uid="6b6429d5-fc39-4a4f-8125-eb6ad304d881"/>
+        <COMPID name="achat d'article" mc="Standard.UseCase" uid="dea6a301-f3e0-4c8e-a93e-470ec55e04ed"/>
+        <COMPID name="devenir membre" mc="Standard.UseCase" uid="130bd79c-348a-431e-a96b-7b391e365ffc"/>
+        <COMPID name="Fournir information necessaire" mc="Standard.UseCase" uid="6b21997c-7cdf-4a0e-8481-b227fc4370f7"/>
+        <COMPID name="Retour de film louer" mc="Standard.UseCase" uid="c3000c44-f7ef-44f7-b142-b0ac6923cd01"/>
+        <COMPID name="Avertir client de retard" mc="Standard.UseCase" uid="6d3b20dd-9e2e-4f72-ab05-0ddf818cd7bf"/>
+        <COMPID name="verifier retard" mc="Standard.UseCase" uid="aadf4046-3246-4fdc-847f-90158471db09"/>
+        <COMPID name="payement de retard" mc="Standard.UseCase" uid="70baba85-d80b-4619-9f89-6d301446410a"/>
+        <COMPID name="payement" mc="Standard.UseCase" uid="3a747a1a-a467-496f-9f54-f37ccfea184f"/>
+        <COMPID name="system" mc="Standard.Actor" uid="2d6575b3-d090-4f8f-8c20-6d2d28986e1d"/>
+        <COMPID name="calcul de somme du" mc="Standard.UseCase" uid="30ca00b7-b05b-48d0-94d8-7dc14fafd66a"/>
+        <COMPID name="créer liste d'appele" mc="Standard.UseCase" uid="f210d74f-7ba2-46db-a501-8f1852e50dce"/>
+        <COMPID name="Gestion de livre perdu" mc="Standard.UseCase" uid="05caaf50-3476-4dda-ac04-af9ce012a5a1"/>
+        <COMPID name="gestion d'inventaire" mc="Standard.UseCase" uid="97a119d6-30ea-4b3f-b194-5c7481ac73c7"/>
+        <COMPID name="Gestion des réservations" mc="Standard.UseCase" uid="122aac93-99f1-486f-882b-c34674ec9684"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Model Use Case diagram" mc="Standard.UseCaseDiagram" uid="f94e5f40-f5de-44a1-abb8-68238d75e22c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
