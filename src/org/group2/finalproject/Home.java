@@ -1,11 +1,14 @@
 package org.group2.finalproject;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+
+import org.group2.finalproject.classes.Membre;
 
 
 public class Home extends JPanel{
@@ -20,7 +23,6 @@ public class Home extends JPanel{
 	 */
 	public Home() 
 	{
-		System.out.println(jo.toString());
 		this.setBounds(0,0,800,800);  
         
         ClientBtn = new JButton("Clients");
@@ -52,16 +54,20 @@ public class Home extends JPanel{
 		});
 		this.add(locationBtn);
 		
-		// Does not show up
-		String data[][]={ {"101","Amit","670000"},    
-                {"102","Jai","780000"},    
-                {"101","Sachin","700000"}};    
-		String column[]={"ID","NAME","SALARY"};     
+		String data[][] = new String[ResourcesUtil.LISTE_MEMBRES.size()][4];
+		
+		for(int i = 0; i < ResourcesUtil.LISTE_MEMBRES.size(); i++)
+		{
+			Membre m = ResourcesUtil.LISTE_MEMBRES.get(i);
+			data[i][0] = m.getCodeClient();
+			data[i][1] = m.getNomClient();
+			data[i][2] = m.getNumeroTelephoneMaison();
+			data[i][3] = m.getAdresseCourriel();
+		}
+		String column[]={"Code Client","Nom","Telephone","Courriel"};  
 		table_1 = new JTable(data, column);
         sp  = new JScrollPane(table_1);
         sp.setBounds(50, 172, 492, 275);
         this.add(sp);
-		//f.getContentPane().setLayout(null);    
-		
 	}
 }
