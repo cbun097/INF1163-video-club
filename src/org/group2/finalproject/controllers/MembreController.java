@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.group2.finalproject.ResourcesUtil;
 import org.group2.finalproject.classes.Membre;
 
 public class MembreController {
@@ -61,5 +62,21 @@ public class MembreController {
 		catch(SQLException e) {
 			System.out.print("Afficher liste erreur: " + e);
 		}
+	}
+	
+	public String[][] getJsonListTemp()
+	{
+		String data[][] = new String[ResourcesUtil.LISTE_MEMBRES.size()][4];
+		
+		for(int i = 0; i < ResourcesUtil.LISTE_MEMBRES.size(); i++)
+		{
+			Membre m = ResourcesUtil.LISTE_MEMBRES.get(i);
+			data[i][0] = m.getCodeClient();
+			data[i][1] = m.getNomClient();
+			data[i][2] = m.getNumeroTelephoneMaison();
+			data[i][3] = m.getAdresseCourriel();
+		}
+		
+		return data;
 	}
 }

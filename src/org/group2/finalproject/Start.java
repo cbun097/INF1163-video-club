@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import org.group2.finalproject.classes.Film;
 import org.group2.finalproject.classes.Membre;
@@ -71,8 +72,15 @@ public class Start
     		JFrame f = new JFrame("Home");    
     		f.setSize(800,800);
 
-    		JPanel home = new Home();
-            f.setContentPane(home);
+    		ClientManagement client = new ClientManagement();
+    		FilmManagement film = new FilmManagement();
+    		LocationManagement location = new LocationManagement();
+    		
+    		JTabbedPane tabbedPane = new JTabbedPane();
+    		tabbedPane.addTab("Clients", client);
+    		tabbedPane.addTab("Films", film);
+    		tabbedPane.addTab("Locations", location);
+            f.setContentPane(tabbedPane);
     		f.setVisible(true);
     		// Oops forgot to add that, now the process ends when you close the thing xD
     		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
