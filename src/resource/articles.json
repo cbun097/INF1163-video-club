@@ -1,0 +1,26 @@
+[
+  {
+    "articles": [
+      {
+        "CodeProduit": "BB123",
+        "NomProduit": "Bonbon",
+        "Prix": 3.99
+      },
+      {
+        "CodeProduit": "PC123",
+        "NomProduit": "Popcorn",
+        "Prix": 1.99
+      },
+      {
+        "CodeProduit": "BP123",
+        "NomProduit": "Barbe à papa",
+        "Prix": 4.99
+      },
+      {
+        "CodeProduit": "BS123",
+        "NomProduit": "Boisson",
+        "Prix": 0.99
+      }
+    ]
+  }
+]
