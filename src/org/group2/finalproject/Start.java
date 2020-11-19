@@ -22,6 +22,10 @@ public class Start
 		String movieFilePath = "resource/films.json";
 		String membresFilePath = "resource/membres.json";
 		
+		// Connexion a la BD
+		ConnexionDB conn = new ConnexionDB();
+		conn.connection();
+		
 		// convert json file to object
         try
         {
