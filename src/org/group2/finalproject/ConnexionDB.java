@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnexionDB {
 	//Source: https://www.codejava.net/java-se/jdbc/jdbc-tutorial-sql-insert-select-update-and-delete-examples
 	
-	public void connection() {
+	public static void getConnexion() {
 		Connection conn = null;
 		try {
 			String url = "jdbc:sqlite:videoclubDB.db";
@@ -29,6 +29,6 @@ public class ConnexionDB {
 		      }catch(SQLException se){
 		         se.printStackTrace();
 		      }
-		}	
+		}
 	}
 }

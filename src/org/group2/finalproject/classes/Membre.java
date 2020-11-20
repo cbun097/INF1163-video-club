@@ -11,18 +11,25 @@ public class Membre {
 	int codeSecret;
 	double montantDu;
 	
-	public Membre(String codeClient, String nomClient, String adresseCourriel, String adresseDomicile,
-			String numeroTelephoneMaison, Boolean estMembre, String carteDeCredit, int codeSecret, double montantDu) {
+	// comment out to test
+//	public Membre(String codeClient, String nomClient, String adresseCourriel, String adresseDomicile,
+//			String numeroTelephoneMaison, Boolean estMembre, String carteDeCredit, int codeSecret, double montantDu) {
+//		super();
+//		this.codeClient = codeClient;
+//		this.nomClient = nomClient;
+//		this.adresseCourriel = adresseCourriel;
+//		this.adresseDomicile = adresseDomicile;
+//		this.numeroTelephoneMaison = numeroTelephoneMaison;
+//		this.estMembre = estMembre;
+//		this.carteDeCredit = carteDeCredit;
+//		this.codeSecret = codeSecret;
+//		this.montantDu = montantDu;
+//	}
+	
+	public Membre(String nomClient, String adresseCourriel) {
 		super();
-		this.codeClient = codeClient;
 		this.nomClient = nomClient;
 		this.adresseCourriel = adresseCourriel;
-		this.adresseDomicile = adresseDomicile;
-		this.numeroTelephoneMaison = numeroTelephoneMaison;
-		this.estMembre = estMembre;
-		this.carteDeCredit = carteDeCredit;
-		this.codeSecret = codeSecret;
-		this.montantDu = montantDu;
 	}
 
 	public String getCodeClient() {

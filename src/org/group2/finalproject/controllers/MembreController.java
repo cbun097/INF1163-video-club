@@ -2,13 +2,15 @@ package org.group2.finalproject.controllers;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.group2.finalproject.ConnexionDB;
 import org.group2.finalproject.ResourcesUtil;
 import org.group2.finalproject.classes.Membre;
 
 public class MembreController {
-	Connection conn;
+	private Connection conn;
 	
 	// Ajouter un nouveau membre
 	public void ajouterMembre(Membre membre) {
@@ -53,11 +55,20 @@ public class MembreController {
 	}
 	
 	// Afficher la liste complete
-	public void afficherFilmListe() {
-		String query = "SELECT * FROM Films";
+	public void afficherMembreListe() {
+		String query = "SELECT * FROM Membres";
 		try { 
 			PreparedStatement statement = conn.prepareStatement(query);
-			statement.executeQuery();
+			ResultSet result = statement.executeQuery();
+			int count = 0;
+			 
+			while (result.next()){
+			    String nom = result.getString("NomClient");
+			    String email = result.getString("AdresseCourriel");
+			 
+			    String output = "User #%d: %s - %s";
+			    System.out.println(String.format(output, ++count, nom, email));
+			}  
 		}
 		catch(SQLException e) {
 			System.out.print("Afficher liste erreur: " + e);

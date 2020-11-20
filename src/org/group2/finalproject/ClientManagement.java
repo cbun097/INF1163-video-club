@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import org.group2.finalproject.classes.Membre;
 import org.group2.finalproject.controllers.MembreController;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ public class ClientManagement extends JPanel {
 		// TEMP before BD
 		String[][] data = controller.getJsonListTemp();
 		String[] column={"Code Client","Nom","Telephone","Courriel"};
+		controller.afficherMembreListe();
 		
 		tblClient = new JTable(data, column);
 		//tblClient.setBounds(142, 11, 298, 278);
@@ -79,23 +81,24 @@ public class ClientManagement extends JPanel {
 	// TODO: Ajouter les fields
 	private void AjouterDialogMembre() {
 		// TODO change
-	  JTextField xField = new JTextField(5);
-      JTextField yField = new JTextField(5);
+	  JTextField nomField = new JTextField(5);
+      JTextField emailField = new JTextField(5);
 
       JPanel myPanel = new JPanel();
-      myPanel.add(new JLabel("x:"));
-      myPanel.add(xField);
+      myPanel.add(new JLabel("Nom:"));
+      myPanel.add(nomField);
       myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-      myPanel.add(new JLabel("y:"));
-      myPanel.add(yField);
+      myPanel.add(new JLabel("Adresse courriel:"));
+      myPanel.add(emailField);
 
       int result = JOptionPane.showConfirmDialog(null, myPanel, 
                "Ajouter un nouveau membre", JOptionPane.OK_CANCEL_OPTION);
       if (result == JOptionPane.OK_OPTION) {
-         System.out.println("x value: " + xField.getText());
-         System.out.println("y value: " + yField.getText());
+    	  Membre membre = new Membre(nomField.getText(), emailField.getText());
+         System.out.println("nom value: " + nomField.getText());
+         System.out.println("email value: " + emailField.getText());
          // TODO Ajouter la methode ajouter membre du controlleur
-         // controller.ajouterMembre();
+         controller.ajouterMembre(membre);
       }     
    }
 	

@@ -3,6 +3,7 @@ package org.group2.finalproject;
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,7 +26,7 @@ public class Start
 		
 		// Connexion a la BD
 		ConnexionDB conn = new ConnexionDB();
-		conn.connection();
+		conn.getConnexion();
 		
 		// convert json file to object
         try
@@ -63,7 +64,7 @@ public class Start
         	    int codeSecret = ((Long)jobject.get("CodeSecret")).intValue();
         	    // revoir, accept valeur null
         	    double montantDu = (double) jobject.get("MontantDu");
-        	    ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
+        	    //ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
         	}
         	System.out.println(ResourcesUtil.LISTE_MEMBRES);
         	
