@@ -10,7 +10,6 @@ import org.group2.finalproject.ResourcesUtil;
 import org.group2.finalproject.classes.Membre;
 
 public class MembreController {
-	private Connection conn;
 	
 	// Ajouter un nouveau membre
 	public void ajouterMembre(Membre membre) {
@@ -18,10 +17,12 @@ public class MembreController {
 		String query = "INSERT INTO Membres (NomClient, AdresseCourrielClient) VALUES (?, ?)";
 		// TODO
 		try { 
-			PreparedStatement statement = conn.prepareStatement(query);	
+			ConnexionDB.initConnexion();
+			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);	
 			statement.setString(1, membre.getNomClient());
 			statement.setString(2, membre.getAdresseCourriel());
 			statement.executeUpdate();
+			ConnexionDB.closeConnection();
 		}
 		catch(SQLException e) {
 			System.out.print("Ajouter membre erreur: " + e);
@@ -33,8 +34,10 @@ public class MembreController {
 		// TODO Ajouter le reste
 		String query = "UPDATE Membre SET NomClient=?, AdresseCourrielClient=? WHERE CodeMembre=?";
 		try {
-			PreparedStatement statement = conn.prepareStatement(query);
+			ConnexionDB.initConnexion();
+			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.executeUpdate();
+			ConnexionDB.closeConnection();
 		}
 		catch(SQLException e) {
 			System.out.print("Modifier membre erreur: " + e);
@@ -46,8 +49,10 @@ public class MembreController {
 	public void supprimerMembre(String CodeMembre) {
 		String query = "DELETE FROM Membre WHERE CodeMembre=?";
 		try {
-			PreparedStatement statement = conn.prepareStatement(query);
+			ConnexionDB.initConnexion();
+			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.executeUpdate();
+			ConnexionDB.closeConnection();
 		}
 		catch(SQLException e) {
 			System.out.print("Supprimer membre erreur: " + e);
@@ -58,8 +63,10 @@ public class MembreController {
 	public void afficherMembreListe() {
 		String query = "SELECT * FROM Membres";
 		try { 
-			PreparedStatement statement = conn.prepareStatement(query);
+			ConnexionDB.initConnexion();
+			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			ResultSet result = statement.executeQuery();
+			ConnexionDB.closeConnection();
 			int count = 0;
 			 
 			while (result.next()){
