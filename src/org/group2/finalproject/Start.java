@@ -42,11 +42,10 @@ public class Start
         	    String nom = (String) jobject.get("Nom");
         	    //String genres = (String)jobject.get("Genres"); // array object
         	    // TODO: ajouters
-        	    ResourcesUtil.LISTE_FILMS.add(new Film(codeFilm, nom));
+        	    //ResourcesUtil.LISTE_FILMS.add(new Film(codeFilm, nom));
         	  //System.out.println(jobject);
         	  
         	}
-        	System.out.println(ResourcesUtil.LISTE_FILMS);
         	
         	// convert JSONArray to JSONObject Membre
         	JSONArray jaMembre = (JSONArray) parser.parse(new FileReader(Start.class.getClassLoader().getResource(membresFilePath).getFile()));
@@ -66,7 +65,6 @@ public class Start
         	    double montantDu = (double) jobject.get("MontantDu");
         	    //ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
         	}
-        	System.out.println(ResourcesUtil.LISTE_MEMBRES);
         	
 
     		// Create & show after loading resources

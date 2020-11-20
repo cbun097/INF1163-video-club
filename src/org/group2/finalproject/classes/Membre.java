@@ -26,8 +26,14 @@ public class Membre {
 //		this.montantDu = montantDu;
 //	}
 	
+	// small test for now i guess
+	public Membre(String code, String nomClient, String adresseCourriel) {
+		this.codeClient = code;
+		this.nomClient = nomClient;
+		this.adresseCourriel = adresseCourriel;
+	}
+	
 	public Membre(String nomClient, String adresseCourriel) {
-		super();
 		this.nomClient = nomClient;
 		this.adresseCourriel = adresseCourriel;
 	}
