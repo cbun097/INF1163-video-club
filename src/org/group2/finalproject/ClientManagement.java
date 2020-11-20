@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -47,7 +48,7 @@ public class ClientManagement extends JPanel {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        //your actions
-		    	AjouterDialogMembre();
+		    	ajouterDialogMembre();
 		    }
 		});
 		
@@ -59,7 +60,7 @@ public class ClientManagement extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ModifierDialogMembre();
+				modifierDialogMembre();
 			}
 		});
 		
@@ -71,16 +72,16 @@ public class ClientManagement extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				SupprimerDialogMembre();
+				supprimerDialogMembre();
 			}
 		});
 	}
 	
 	// Methode pour Ajouter un membre
 	// TODO: Ajouter les fields
-	private void AjouterDialogMembre() {
+	private void ajouterDialogMembre() {
 		// TODO change
-		  JTextField codeField = new JTextField(5);
+	  JTextField codeField = new JTextField(5);
 	  JTextField nomField = new JTextField(5);
       JTextField emailField = new JTextField(5);
 
@@ -106,44 +107,59 @@ public class ClientManagement extends JPanel {
       }     
    }
 	
-	private void ModifierDialogMembre() {
-		// TODO ajouter la methode pour modifier un membre du controlleur
-		// controller.modifierMembre();
-		// TODO change
-		  JTextField codeField = new JTextField(5);
-		  JTextField nomField = new JTextField(5);
-	      JTextField emailField = new JTextField(5);
+	private void modifierDialogMembre() 
+	{
+		JComboBox<String> codeField = new JComboBox<>();
+		
+		for (Membre m : controller.getListeMembres()) {
+			codeField.addItem(m.getCodeClient());
+		}
+		  
+		JTextField nomField = new JTextField(5);
+	    JTextField emailField = new JTextField(5);
 
-	      JPanel myPanel = new JPanel();
-	      myPanel.add(new JLabel("Code:"));
-	      myPanel.add(codeField);
-	      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	      myPanel.add(new JLabel("Nom:"));
-	      myPanel.add(nomField);
-	      myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	      myPanel.add(new JLabel("Adresse courriel:"));
-	      myPanel.add(emailField);
+	    JPanel myPanel = new JPanel();
+	    myPanel.add(new JLabel("Code:"));
+	    myPanel.add(codeField);
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Nom:"));
+	    myPanel.add(nomField);
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Adresse courriel:"));
+	    myPanel.add(emailField);
 
-	      int result = JOptionPane.showConfirmDialog(null, myPanel, 
-	               "Modifier un membre", JOptionPane.OK_CANCEL_OPTION);
-	      if (result == JOptionPane.OK_OPTION) {
-	    	 Membre membre = controller.getListeMembres().stream()
-	    			 .filter((me) -> codeField.getText().equals(me.getCodeClient()))
-	    			 .findAny()
-	    			 .orElse(null);
-	    	 
-	    	 membre.setNomClient(nomField.getText());
-	    	 membre.setAdresseCourriel(emailField.getText());
-	         System.out.println("nom value: " + membre.getNomClient());
-	         System.out.println("email value: " + membre.getAdresseCourriel());
-	         // TODO Ajouter la methode modifier membre du controlleur
-	         controller.modifierMembre(membre);
-	         updateTableData();
-	      }     
+		codeField.addActionListener(e -> {
+			Membre membre = controller.getListeMembres().stream()
+		    	 .filter((me) -> codeField.getSelectedItem().equals(me.getCodeClient()))
+		    	 .findAny()
+		    	 .orElse(null);
+			nomField.setText(membre.getNomClient());
+			emailField.setText(membre.getAdresseCourriel());
+		});
+	    
+		if(codeField.getItemCount() > 0)
+			codeField.setSelectedIndex(0);
+
+	    int result = JOptionPane.showConfirmDialog(null, myPanel, 
+	             "Modifier un membre", JOptionPane.OK_CANCEL_OPTION);
+	    if (result == JOptionPane.OK_OPTION) {
+
+			Membre selectMembre = controller.getListeMembres().stream()
+			    	 .filter((me) -> codeField.getSelectedItem().equals(me.getCodeClient()))
+			    	 .findAny()
+			    	 .orElse(null);
+		    selectMembre.setNomClient(nomField.getText());
+		    selectMembre.setAdresseCourriel(emailField.getText());
+		    System.out.println("nom value: " + selectMembre.getNomClient());
+		    System.out.println("email value: " + selectMembre.getAdresseCourriel());
+		    // TODO Ajouter la methode modifier membre du controlleur
+	    	controller.modifierMembre(selectMembre);
+	    	updateTableData();
+	    }     
 	}
 	
 	// Methode pour supprimer dialog membre
-	private void SupprimerDialogMembre() {
+	private void supprimerDialogMembre() {
 	  JTextField membreCodeSupprimer = new JTextField(5);
 
       JPanel myPanel = new JPanel();
