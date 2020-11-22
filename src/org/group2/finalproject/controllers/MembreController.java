@@ -43,7 +43,7 @@ public class MembreController
 	
 	// Modifier un membre
 	public void modifierMembre(Membre membre) {
-		String query = "UPDATE Membres SET NomClient=?, AdresseCourriel=?, NumeroTelephoneMaison=?, AdresseDomicile=?"
+		String query = "UPDATE Membres SET NomClient=?, AdresseCourriel=?, NumeroTelephoneMaison=?, AdresseDomicile=?,"
 				+ "CarteDeCredit=?, EstMembre=?, CodeSecret=?, MontantDu=? WHERE CodeClient=?";
 		try {
 			ConnexionDB.initConnexion();
