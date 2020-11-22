@@ -5,6 +5,8 @@ Projet finale pour INF1163 - Projet video club
 ## Exigences: 
 - Eclipse
 - JDK 14.0.2
+- [Sqlite Browser](https://github.com/sqlitebrowser/sqlitebrowser)
+- sqlite-jbcd
 
 ## Membres de l'équipe:
  - Claire Bun

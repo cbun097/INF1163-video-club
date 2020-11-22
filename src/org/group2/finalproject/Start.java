@@ -3,6 +3,7 @@ package org.group2.finalproject;
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,10 +26,10 @@ public class Start
 		
 		// Connexion a la BD
 		ConnexionDB conn = new ConnexionDB();
-		conn.connection();
+		conn.getConnexion();
 		
 		// convert json file to object
-        try
+        /*try
         {
             //convert JSONArray to JSONObject FILM
         	//ArrayList<Film> filmList = new ArrayList<>();
@@ -41,11 +42,10 @@ public class Start
         	    String nom = (String) jobject.get("Nom");
         	    //String genres = (String)jobject.get("Genres"); // array object
         	    // TODO: ajouters
-        	    ResourcesUtil.LISTE_FILMS.add(new Film(codeFilm, nom));
+        	    //ResourcesUtil.LISTE_FILMS.add(new Film(codeFilm, nom));
         	  //System.out.println(jobject);
         	  
         	}
-        	System.out.println(ResourcesUtil.LISTE_FILMS);
         	
         	// convert JSONArray to JSONObject Membre
         	JSONArray jaMembre = (JSONArray) parser.parse(new FileReader(Start.class.getClassLoader().getResource(membresFilePath).getFile()));
@@ -63,9 +63,8 @@ public class Start
         	    int codeSecret = ((Long)jobject.get("CodeSecret")).intValue();
         	    // revoir, accept valeur null
         	    double montantDu = (double) jobject.get("MontantDu");
-        	    ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
-        	}
-        	System.out.println(ResourcesUtil.LISTE_MEMBRES);
+        	    //ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
+        	}*/
         	
 
     		// Create & show after loading resources
@@ -85,10 +84,9 @@ public class Start
     		// Oops forgot to add that, now the process ends when you close the thing xD
     		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
-        catch(Exception e)
+	/*catch(Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
         
-    }
 }

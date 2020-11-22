@@ -4,31 +4,40 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-// NOT TESTED
 public class ConnexionDB {
 	//Source: https://www.codejava.net/java-se/jdbc/jdbc-tutorial-sql-insert-select-update-and-delete-examples
+	private static Connection conn;
 	
-	public void connection() {
-		Connection conn = null;
-		try {
+	public static Connection getConnexion()
+	{
+		return conn;
+	}
+	
+	public static void initConnexion() {
+		try 
+		{
 			String url = "jdbc:sqlite:videoclubDB.db";
 		    conn = DriverManager.getConnection(url);
 		 
-		    if (conn != null) {
+		    if (conn != null) 
 		        System.out.println("Connected");
-		    }
 		}
-		catch (SQLException ex) {
+		catch (SQLException ex)
+		{
 		    ex.printStackTrace();
 		}
-		finally {
-			try{
-		         if(conn!=null)
-		            conn.close();
-		      }catch(SQLException se){
-		         se.printStackTrace();
-		      }
-		}	
+	}
+	
+	public static void closeConnection()
+	{
+		try
+		{
+			if(conn!=null)
+				conn.close();
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
 	}
 }

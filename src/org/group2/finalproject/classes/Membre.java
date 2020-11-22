@@ -24,6 +24,11 @@ public class Membre {
 		this.codeSecret = codeSecret;
 		this.montantDu = montantDu;
 	}
+		
+	public Membre(String nomClient, String adresseCourriel) {
+		this.nomClient = nomClient;
+		this.adresseCourriel = adresseCourriel;
+	}
 
 	public String getCodeClient() {
 		return codeClient;
