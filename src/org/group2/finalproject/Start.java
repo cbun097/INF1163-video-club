@@ -29,7 +29,7 @@ public class Start
 		conn.getConnexion();
 		
 		// convert json file to object
-        try
+        /*try
         {
             //convert JSONArray to JSONObject FILM
         	//ArrayList<Film> filmList = new ArrayList<>();
@@ -64,7 +64,7 @@ public class Start
         	    // revoir, accept valeur null
         	    double montantDu = (double) jobject.get("MontantDu");
         	    //ResourcesUtil.LISTE_MEMBRES.add(new Membre(codeClient, nomClient, adresseCouriel,adresseDomicile,numTel, estMembre, carteCredit, codeSecret, montantDu));
-        	}
+        	}*/
         	
 
     		// Create & show after loading resources
@@ -84,10 +84,9 @@ public class Start
     		// Oops forgot to add that, now the process ends when you close the thing xD
     		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
-        catch(Exception e)
+	/*catch(Exception e)
         {
             e.printStackTrace();
-        }
+        }*/
         
-    }
 }

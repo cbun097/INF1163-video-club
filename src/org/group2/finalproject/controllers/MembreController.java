@@ -14,15 +14,21 @@ public class MembreController
 	
 	// Ajouter un nouveau membre
 	public void ajouterMembre(Membre membre) {
-		// TODO Ajouter le reste
-		String query = "INSERT INTO Membres (CodeClient, NomClient, AdresseCourriel) VALUES (?, ?, ?)";
-		// TODO
+		String query = "INSERT INTO Membres (CodeClient, NomClient, AdresseCourriel, NumeroTelephoneMaison, AdresseDomicile, "
+				+ "CarteDeCredit, EstMembre, CodeSecret, MontantDu) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 		try { 
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);	
 			statement.setString(1, membre.getCodeClient());
 			statement.setString(2, membre.getNomClient());
 			statement.setString(3, membre.getAdresseCourriel());
+			statement.setString(4, membre.getNumeroTelephoneMaison());
+			statement.setString(5, membre.getAdresseDomicile());
+			statement.setString(6, membre.getCarteDeCredit());
+			statement.setBoolean(7, membre.getEstMembre());
+			statement.setInt(8, membre.getCodeSecret());
+			statement.setDouble(9, membre.getMontantDu());
 			statement.executeUpdate();
 			
 			updateMembreListe();
@@ -37,14 +43,20 @@ public class MembreController
 	
 	// Modifier un membre
 	public void modifierMembre(Membre membre) {
-		// TODO Ajouter le reste
-		String query = "UPDATE Membres SET NomClient=?, AdresseCourriel=? WHERE CodeClient=?";
+		String query = "UPDATE Membres SET NomClient=?, AdresseCourriel=?, NumeroTelephoneMaison=?, AdresseDomicile=?"
+				+ "CarteDeCredit=?, EstMembre=?, CodeSecret=?, MontantDu=? WHERE CodeClient=?";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, membre.getNomClient());
 			statement.setString(2, membre.getAdresseCourriel());
-			statement.setString(3, membre.getCodeClient());
+			statement.setString(3, membre.getNumeroTelephoneMaison());
+			statement.setString(4, membre.getAdresseDomicile());
+			statement.setString(5, membre.getCarteDeCredit());
+			statement.setBoolean(6, membre.getEstMembre());
+			statement.setInt(7, membre.getCodeSecret());
+			statement.setDouble(8, membre.getMontantDu());
+			statement.setString(9, membre.getCodeClient());
 			statement.executeUpdate();
 			
 			updateMembreListe();
@@ -59,14 +71,13 @@ public class MembreController
 	
 	
 	// Supprimer un membre 
-	public void supprimerMembre(String codeMembre) {
+	public void supprimerMembre(Membre membre) {
 		String query = "DELETE FROM Membres WHERE CodeClient=?";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
-			statement.setString(1, codeMembre);
+			statement.setString(1, membre.getCodeClient());
 			statement.executeUpdate();
-			
 			updateMembreListe();
 		}
 		catch(SQLException e) {
@@ -92,11 +103,19 @@ public class MembreController
 			    String code = result.getString("CodeClient");
 			    String nom = result.getString("NomClient");
 			    String email = result.getString("AdresseCourriel");
+			    String adresseDomicile = result.getString("AdresseDomicile");
+			    String numTel = result.getString("NumeroTelephoneMaison");
+			    String carteCredit = result.getString("CarteDeCredit");
+			    Boolean estMembre = result.getBoolean("EstMembre");
+			    int codeSecret = result.getInt("CodeSecret");
+			    double montant = result.getDouble("MontantDu");
 			    
-			    listeMembres.add(new Membre(code, nom, email));
+			    listeMembres.add(new Membre(code, nom, email, adresseDomicile, numTel, estMembre, 
+			    		carteCredit, codeSecret, montant));
 			 
-			    String output = "User #%d: %s - %s";
-			    System.out.println(String.format(output, ++count, nom, email));
+			    String output = "User #%d: %s - %s - %s - %s - %s - %s - %s - %s";
+			    System.out.println(String.format(output, ++count, nom, email, adresseDomicile, numTel,
+			    		carteCredit,estMembre, codeSecret, montant));
 			}  
 		}
 		catch(SQLException e) {
@@ -114,15 +133,20 @@ public class MembreController
 	
 	public String[][] getListeMembresData()
 	{
-		String data[][] = new String[listeMembres.size()][4];
+		String data[][] = new String[listeMembres.size()][9];
 		
 		for(int i = 0; i < listeMembres.size(); i++)
 		{
 			Membre m = listeMembres.get(i);
 			data[i][0] = m.getCodeClient();
 			data[i][1] = m.getNomClient();
-			data[i][2] = m.getNumeroTelephoneMaison();
-			data[i][3] = m.getAdresseCourriel();
+			data[i][2] = m.getAdresseCourriel();
+			data[i][3] = m.getNumeroTelephoneMaison();
+			data[i][4] = m.getAdresseDomicile();
+			data[i][5] = m.getCarteDeCredit();
+			data[i][6] = Boolean.toString(m.getEstMembre());
+			data[i][7] = Integer.toString(m.getCodeSecret());
+			data[i][8] = Double.toString(m.getMontantDu());
 		}
 		
 		return data;
