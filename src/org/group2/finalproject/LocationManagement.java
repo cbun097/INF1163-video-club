@@ -29,18 +29,41 @@ public class LocationManagement extends JPanel {
 		JButton btnRent = new JButton("Louer");
 		btnRent.setBounds(10, 40, 122, 23);
 		add(btnRent);
+		btnRent.addActionListener(e -> louerDisqueDialog());
 		
 		JButton btnReserve = new JButton("R\u00E9server");
 		btnReserve.setBounds(10, 74, 122, 23);
 		add(btnReserve);
+		btnReserve.addActionListener(e -> reserveDisqueDialog());
 		
 		JButton btnReturn = new JButton("Retourner");
 		btnReturn.setBounds(10, 108, 122, 23);
 		add(btnReturn);
+		btnReturn.addActionListener(e -> retournerDisqueDialog());
 		
 		JButton btnShowAll = new JButton("Afficher tout");
 		btnShowAll.setBounds(10, 142, 122, 23);
 		add(btnShowAll);
+		btnShowAll.addActionListener(e -> afficherDisque());
+	}
+	
+	public void louerDisqueDialog() {
+		System.out.println("Louer");
+		//controller.louerFilm(disque);
+	}
+	
+	public void reserveDisqueDialog() {
+		System.out.println("Reserver");
+		//controller.reserveFilm(disque);
+	}
+	
+	public void retournerDisqueDialog() {
+		System.out.println("Retourner");
+		//controller.reserveFilm(disque);
+	}
+	
+	public void afficherDisque() {
+		System.out.println("Afficher tout");
 	}
 
 }
