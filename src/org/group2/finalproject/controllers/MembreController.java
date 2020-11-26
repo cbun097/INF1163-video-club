@@ -13,14 +13,16 @@ public class MembreController
 	private ArrayList<Membre> listeMembres = new ArrayList<>();
 	
 	// Ajouter un nouveau membre
-	public void ajouterMembre(Membre membre) {
+	public void ajouterMembre(Membre membre)
+	{
 		String query = "INSERT INTO Membres (NumeroTelephone, NomClient, AdresseCourriel, AdresseDomicile, "
-				+ "CarteDeCredit, CodeSecret, EstMembre, MontantDu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "CarteDeCredit, EstMembre, CodeSecret, MontantDu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-		try { 
+		try
+		{ 
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);	
-			statement.setInt(1, Integer.parseInt(membre.getNumeroTelephone()));
+			statement.setString(1, membre.getNumeroTelephone());
 			statement.setString(2, membre.getNomClient());
 			statement.setString(3, membre.getAdresseCourriel());
 			statement.setString(4, membre.getAdresseDomicile());
@@ -29,13 +31,15 @@ public class MembreController
 			statement.setInt(7, membre.getCodeSecret());
 			statement.setDouble(8, membre.getMontantDu());
 			statement.executeUpdate();
-			
+			System.out.println("Membre ajouté avec succès!");
 			updateMembreListe();
 		}
-		catch(SQLException e) {
-			System.out.print("Ajouter membre erreur: " + e);
+		catch(SQLException e) 
+		{
+			System.out.println("Ajouter membre erreur: " + e);
 		}
-		finally {
+		finally
+		{
 			ConnexionDB.closeConnection();
 		}
 	}
@@ -43,8 +47,9 @@ public class MembreController
 	// Modifier un membre
 	public void modifierMembre(Membre membre) {
 		String query = "UPDATE Membres SET NomClient=?, AdresseCourriel=?, AdresseDomicile=?,"
-				+ "CarteDeCredit=?, EstMembre=?, CodeSecret=?, MontantDu=? WHERE NumeroTelephone=?";
-		try {
+				+ " CarteDeCredit=?, EstMembre=?, CodeSecret=?, MontantDu=? WHERE NumeroTelephone=?";
+		try
+		{
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, membre.getNomClient());
@@ -56,13 +61,15 @@ public class MembreController
 			statement.setDouble(7, membre.getMontantDu());
 			statement.setString(8, membre.getNumeroTelephone());
 			statement.executeUpdate();
-			
+			System.out.println("Membre modifié avec succès!");
 			updateMembreListe();
 		}
-		catch(SQLException e) {
-			System.out.print("Modifier membre erreur: " + e);
+		catch(SQLException e) 
+		{
+			System.out.println("Modifier membre erreur: " + e);
 		}
-		finally {
+		finally 
+		{
 			ConnexionDB.closeConnection();
 		}
 	}
@@ -71,17 +78,21 @@ public class MembreController
 	// Supprimer un membre 
 	public void supprimerMembre(Membre membre) {
 		String query = "DELETE FROM Membres WHERE NumeroTelephone=?";
-		try {
+		try 
+		{
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, membre.getNumeroTelephone());
 			statement.executeUpdate();
+			System.out.println("Membre supprimé avec succès!");
 			updateMembreListe();
 		}
-		catch(SQLException e) {
-			System.out.print("Supprimer membre erreur: " + e);
+		catch(SQLException e)
+		{
+			System.out.println("Supprimer membre erreur: " + e);
 		}
-		finally {
+		finally 
+		{
 			ConnexionDB.closeConnection();
 		}
 	}
@@ -89,15 +100,15 @@ public class MembreController
 	// Afficher la liste complete
 	public void updateMembreListe() {
 		String query = "SELECT * FROM Membres";
-		try { 
+		try
+		{ 
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
-			int count = 0;
-			
 		    listeMembres.clear();
-			while (result.next()){
+			while (result.next())
+			{
 			    String numTel = result.getString("NumeroTelephone");
 			    String nom = result.getString("NomClient");
 			    String email = result.getString("AdresseCourriel");
@@ -109,16 +120,16 @@ public class MembreController
 			    
 			    listeMembres.add(new Membre(numTel, nom, email, adresseDomicile, estMembre, 
 			    		carteCredit, codeSecret, montant));
-			 
-			    String output = "User #%d: %s - %s - %s - %s - %s - %s - %s";
-			    System.out.println(String.format(output, ++count, numTel, nom, email, adresseDomicile,
-			    		carteCredit,estMembre, codeSecret, montant));
-			}  
+			}
+			
+			System.out.println("Liste des membres mise à jour");
 		}
-		catch(SQLException e) {
+		catch(SQLException e)
+		{
 			System.out.print("Afficher liste erreur: " + e);
 		}
-		finally {
+		finally 
+		{
 			ConnexionDB.closeConnection();
 		}
 	}
