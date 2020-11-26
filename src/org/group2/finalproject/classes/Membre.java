@@ -1,41 +1,34 @@
 package org.group2.finalproject.classes;
 
 public class Membre {
-	String codeClient;
+	String numeroTelephone;
 	String nomClient;
 	String adresseCourriel;
 	String adresseDomicile;
-	String numeroTelephoneMaison;
 	Boolean estMembre; 
 	String carteDeCredit;
 	int codeSecret;
 	double montantDu;
 	
-	public Membre(String codeClient, String nomClient, String adresseCourriel, String adresseDomicile,
-			String numeroTelephoneMaison, Boolean estMembre, String carteDeCredit, int codeSecret, double montantDu) {
+	public Membre(String numeroTelephone, String nomClient, String adresseCourriel, String adresseDomicile,
+			 Boolean estMembre, String carteDeCredit, int codeSecret, double montantDu) {
 		super();
-		this.codeClient = codeClient;
+		this.numeroTelephone = numeroTelephone;
 		this.nomClient = nomClient;
 		this.adresseCourriel = adresseCourriel;
 		this.adresseDomicile = adresseDomicile;
-		this.numeroTelephoneMaison = numeroTelephoneMaison;
 		this.estMembre = estMembre;
 		this.carteDeCredit = carteDeCredit;
 		this.codeSecret = codeSecret;
 		this.montantDu = montantDu;
 	}
-		
-	public Membre(String nomClient, String adresseCourriel) {
-		this.nomClient = nomClient;
-		this.adresseCourriel = adresseCourriel;
+	
+	public String getNumeroTelephone() {
+		return numeroTelephone;
 	}
 
-	public String getCodeClient() {
-		return codeClient;
-	}
-
-	public void setCodeClient(String codeClient) {
-		this.codeClient = codeClient;
+	public void setNumeroTelephone(String numeroTelephone) {
+		this.numeroTelephone = numeroTelephone;
 	}
 
 	public String getNomClient() {
@@ -60,14 +53,6 @@ public class Membre {
 
 	public void setAdresseDomicile(String adresseDomicile) {
 		this.adresseDomicile = adresseDomicile;
-	}
-
-	public String getNumeroTelephoneMaison() {
-		return numeroTelephoneMaison;
-	}
-
-	public void setNumeroTelephoneMaison(String numeroTelephoneMaison) {
-		this.numeroTelephoneMaison = numeroTelephoneMaison;
 	}
 
 	public Boolean getEstMembre() {
@@ -104,8 +89,8 @@ public class Membre {
 
 	@Override
 	public String toString() {
-		return "Membre [codeClient=" + codeClient + ", nomClient=" + nomClient + ", adresseCourriel=" + adresseCourriel
-				+ ", adresseDomicile=" + adresseDomicile + ", numeroTelephoneMaison=" + numeroTelephoneMaison
+		return "Membre [numeroTelephone=" + numeroTelephone + ", nomClient=" + nomClient + ", adresseCourriel=" + adresseCourriel
+				+ ", adresseDomicile=" + adresseDomicile
 				+ ", estMembre=" + estMembre + ", carteDeCredit=" + carteDeCredit + ", codeSecret=" + codeSecret
 				+ ", montantDu=" + montantDu + "]";
 	}

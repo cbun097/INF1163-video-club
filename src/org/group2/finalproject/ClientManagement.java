@@ -17,7 +17,6 @@ public class ClientManagement extends JPanel
 	
 	// Champs des dialog modals pour Ajouter/Modifier/Supprimer
 	private JComboBox<String> modalCodeFieldSelect;
-	private JTextField modalCodeField;
 	private JTextField modalNomField;
 	private JTextField modalEmailField;
 	private JTextField modalAdresseField;
@@ -58,8 +57,6 @@ public class ClientManagement extends JPanel
 		add(btnDelete);
 		btnDelete.addActionListener(e -> supprimerDialogMembre());
 		
-
-		modalCodeField = new JTextField(5);
 		modalNomField = new JTextField(5);
 		modalEmailField = new JTextField(5);
 		modalAdresseField = new JTextField(5);
@@ -74,13 +71,12 @@ public class ClientManagement extends JPanel
 			if(modalCodeFieldSelect.getSelectedItem() != null)
 			{
 				Membre membre = controller.getListeMembres().stream()
-				    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeClient()))
+				    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 				    	 .findAny()
 				    	 .orElse(null);
 					modalNomField.setText(membre.getNomClient());
 					modalEmailField.setText(membre.getAdresseCourriel());
 					modalAdresseField.setText(membre.getAdresseDomicile());
-					modalNumTel.setText(membre.getNumeroTelephoneMaison());
 					modalCarteCredit.setText(membre.getCarteDeCredit());
 					modalEstMembre.setSelected(membre.getEstMembre());
 					modalCodeSecret.setText(Integer.toString(membre.getCodeSecret()));
@@ -100,8 +96,8 @@ public class ClientManagement extends JPanel
 	    	Boolean estMembreChecked = modalEstMembre.isSelected();
 	    	int codeSecretValeur = Integer.parseInt(modalCodeSecret.getText());
 	    	double montandDuValeur = Double.parseDouble(modalMontantDu.getText());
-	    	Membre membre = new Membre(modalCodeField.getText(), modalNomField.getText(), modalEmailField.getText(), modalAdresseField.getText(),
-			modalNumTel.getText(),estMembreChecked, modalCarteCredit.getText() , codeSecretValeur, montandDuValeur);
+	    	Membre membre = new Membre(modalNumTel.getText(),modalNomField.getText(), modalEmailField.getText(), modalAdresseField.getText(),
+			estMembreChecked, modalCarteCredit.getText() , codeSecretValeur, montandDuValeur);
 	    	controller.ajouterMembre(membre);
 	    	updateTableData();
 	    }     
@@ -115,13 +111,13 @@ public class ClientManagement extends JPanel
 	    if (result == JOptionPane.OK_OPTION) 
 	    {
 			Membre selectMembre = controller.getListeMembres().stream()
-			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeClient()))
+			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 			    	 .findAny()
 			    	 .orElse(null);
 		    selectMembre.setNomClient(modalNomField.getText());
 		    selectMembre.setAdresseCourriel(modalEmailField.getText());
 		    selectMembre.setAdresseDomicile(modalAdresseField.getText());
-		    selectMembre.setNumeroTelephoneMaison(modalNumTel.getText());
+		    selectMembre.setNumeroTelephone(modalNumTel.getText());
 		    selectMembre.setCarteDeCredit(modalCarteCredit.getText());
 		    selectMembre.setEstMembre(modalEstMembre.isSelected());
 		    selectMembre.setCodeSecret(Integer.parseInt(modalCodeSecret.getText()));
@@ -137,7 +133,7 @@ public class ClientManagement extends JPanel
 		modalCodeFieldSelect.removeAllItems();// = new JComboBox<>();
 	  
 		for (Membre m : controller.getListeMembres()) 
-			modalCodeFieldSelect.addItem(m.getCodeClient());
+			modalCodeFieldSelect.addItem(m.getNumeroTelephone());
 
 		if(modalCodeFieldSelect.getItemCount() > 0)
 			modalCodeFieldSelect.setSelectedIndex(tblClient.getSelectedRow() >= 0 ? tblClient.getSelectedRow() : 0);
@@ -151,7 +147,7 @@ public class ClientManagement extends JPanel
 		if (result == JOptionPane.OK_OPTION) 
 		{
 			Membre selectMembre = controller.getListeMembres().stream()
-			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeClient()))
+			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 			    	 .findAny()
 			    	 .orElse(null);
 			controller.supprimerMembre(selectMembre);
@@ -161,11 +157,11 @@ public class ClientManagement extends JPanel
 	
 	private void updateTableData()
 	{
-		tblClient.setModel(new DefaultTableModel(controller.getListeMembresData(), new String[]{"Code Client","Nom","Courriel", 
-				"Telephone","Adresse Domicile", "Carte de credit","Est Membre", "Code Secret", "Montant du"}));
+		tblClient.setModel(new DefaultTableModel(controller.getListeMembresData(), new String[]{"Telephone", "Nom","Courriel", 
+				"Adresse Domicile", "Carte de credit","Est Membre", "Code Secret", "Montant du"}));
 	}
 	
-	public JPanel ClientJPanel(boolean codeTextField) 
+	public JPanel ClientJPanel(boolean telTextField) 
 	{
 	    JPanel myPanel = new JPanel();
 
@@ -182,11 +178,11 @@ public class ClientManagement extends JPanel
 	    myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Code:"));
-	    if(codeTextField)
+	    myPanel.add(new JLabel("Numero de telephone:"));
+	    if(telTextField)
 	    {
-	    	modalCodeField.setText("");
-	    	myPanel.add(modalCodeField);
+	    	modalNumTel.setText("");
+	    	myPanel.add(modalNumTel);
 	    }
 	    else
 	    {
@@ -194,7 +190,7 @@ public class ClientManagement extends JPanel
 	    	myPanel.add(modalCodeFieldSelect);
 	    	
 	    	for (Membre m : controller.getListeMembres())
-	    		modalCodeFieldSelect.addItem(m.getCodeClient());
+	    		modalCodeFieldSelect.addItem(m.getNumeroTelephone());
 		    
 			if(modalCodeFieldSelect.getItemCount() > 0)
 				modalCodeFieldSelect.setSelectedIndex(tblClient.getSelectedRow() >= 0 ? tblClient.getSelectedRow() : 0);
@@ -211,10 +207,6 @@ public class ClientManagement extends JPanel
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Adresse domicile:"));
 	    myPanel.add(modalAdresseField);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Numero de telephone:"));
-	    myPanel.add(modalNumTel);
 	    
 	    // Display??
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
