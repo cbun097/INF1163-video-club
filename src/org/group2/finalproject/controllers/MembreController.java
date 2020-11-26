@@ -20,7 +20,7 @@ public class MembreController
 		try { 
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);	
-			statement.setString(1, membre.getNumeroTelephone());
+			statement.setInt(1, Integer.parseInt(membre.getNumeroTelephone()));
 			statement.setString(2, membre.getNomClient());
 			statement.setString(3, membre.getAdresseCourriel());
 			statement.setString(4, membre.getAdresseDomicile());

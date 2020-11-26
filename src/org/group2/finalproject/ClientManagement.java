@@ -2,7 +2,6 @@ package org.group2.finalproject;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import org.group2.finalproject.classes.Membre;
 import org.group2.finalproject.controllers.MembreController;
@@ -12,7 +11,6 @@ import org.group2.finalproject.controllers.MembreController;
 public class ClientManagement extends JPanel 
 {
 	private JTable tblClient;
-	private TableModel tblMdlClient;
 	private MembreController controller;
 	
 	// Champs des dialog modals pour Ajouter/Modifier/Supprimer
@@ -22,7 +20,7 @@ public class ClientManagement extends JPanel
 	private JTextField modalAdresseField;
 	private JTextField modalNumTel;
 	private JTextField modalCarteCredit;
-	private JCheckBox modalEstMembre = new JCheckBox();
+	private JCheckBox modalEstMembre;
 	private JTextField modalCodeSecret;
 	private JTextField modalMontantDu;
 
