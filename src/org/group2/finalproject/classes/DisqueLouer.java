@@ -3,6 +3,7 @@ package org.group2.finalproject.classes;
 import java.util.Date;
 
 public class DisqueLouer {
+	// TODO ajouter id de la reservation
 	String codeClient;
 	String codeDisque;
 	Date dateLouer;
