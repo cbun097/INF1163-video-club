@@ -8,14 +8,13 @@ public class Film {
 	String nom; 
 	String genre;
 	Date dateSortie;
-	String desription;
 	Boolean estNouveau;
 	String duree;
 	String pays;
 	String affiche;
-	String director;
+	String directeur;
 	String scenariste;
-	String scenario; // dunno
+	String scenario;
 	int quantiteDVD;
 	int quantiteBluray;
 	double prixVente;
@@ -48,9 +47,10 @@ public class Film {
 	}*/
 	
 	// new contructor for testing purposes only
-	public Film(String codeFilm, String nom) {
+	public Film(String codeFilm, String nom, String duree) {
 		this.codeFilm = codeFilm;
 		this.nom = nom;
+		this.duree = duree;
 	}
 
 	public String getCodeFilm() {
@@ -85,14 +85,6 @@ public class Film {
 		this.dateSortie = dateSortie;
 	}
 
-	public String getDesription() {
-		return desription;
-	}
-
-	public void setDesription(String desription) {
-		this.desription = desription;
-	}
-
 	public Boolean getEstNouveau() {
 		return estNouveau;
 	}
@@ -123,14 +115,6 @@ public class Film {
 
 	public void setAffiche(String affiche) {
 		this.affiche = affiche;
-	}
-
-	public String getDirector() {
-		return director;
-	}
-
-	public void setDirector(String director) {
-		this.director = director;
 	}
 
 	public String getScenariste() {
@@ -189,14 +173,13 @@ public class Film {
 		this.prixJournee = prixJournee;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Film [codeFilm=" + codeFilm + ", nom=" + nom + ", genre=" + genre + ", dateSortie=" + dateSortie
-				+ ", desription=" + desription + ", estNouveau=" + estNouveau + ", duree=" + duree + ", pays=" + pays
-				+ ", affiche=" + affiche + ", director=" + director + ", scenariste=" + scenariste + ", scenario="
-				+ scenario + ", quantiteDVD=" + quantiteDVD + ", quantiteBluray=" + quantiteBluray + ", prixVente="
-				+ prixVente + ", prixSemaine=" + prixSemaine + ", prixJournee=" + prixJournee + "]";
+				+ ", estNouveau=" + estNouveau + ", duree=" + duree + ", pays=" + pays + ", affiche=" + affiche
+				+ ", directeur=" + directeur + ", scenariste=" + scenariste + ", scenario=" + scenario
+				+ ", quantiteDVD=" + quantiteDVD + ", quantiteBluray=" + quantiteBluray + ", prixVente=" + prixVente
+				+ ", prixSemaine=" + prixSemaine + ", prixJournee=" + prixJournee + "]";
 	}
-
+	
 }
