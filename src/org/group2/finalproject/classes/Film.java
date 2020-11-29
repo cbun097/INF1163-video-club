@@ -7,7 +7,8 @@ public class Film {
 	String codeFilm;
 	String nom; 
 	String genre;
-	Date dateSortie;
+	// TODO String dans la BD changer pour DATE
+	String dateSortie;
 	Boolean estNouveau;
 	String duree;
 	String pays;
@@ -20,23 +21,20 @@ public class Film {
 	double prixVente;
 	double prixSemaine;
 	double prixJournee;
-	// manque les acteurs
 	
-	
-	/**public Film(String codeFilm, String nom, String genre, Date dateSortie, String desription, Boolean estNouveau,
-			String duree, String pays, String affiche, String director, String scenariste, String scenario,
+	// remove affiche
+	public Film(String codeFilm, String nom, String genre, String dateSortie, Boolean estNouveau,
+			String duree, String pays, String directeur, String scenariste, String scenario,
 			int quantiteDVD, int quantiteBluray, double prixVente, double prixSemaine, double prixJournee) {
 		super();
 		this.codeFilm = codeFilm;
 		this.nom = nom;
 		this.genre = genre;
 		this.dateSortie = dateSortie;
-		this.desription = desription;
 		this.estNouveau = estNouveau;
 		this.duree = duree;
 		this.pays = pays;
-		this.affiche = affiche;
-		this.director = director;
+		this.directeur = directeur;
 		this.scenariste = scenariste;
 		this.scenario = scenario;
 		this.quantiteDVD = quantiteDVD;
@@ -44,15 +42,8 @@ public class Film {
 		this.prixVente = prixVente;
 		this.prixSemaine = prixSemaine;
 		this.prixJournee = prixJournee;
-	}*/
-	
-	// new contructor for testing purposes only
-	public Film(String codeFilm, String nom, String duree) {
-		this.codeFilm = codeFilm;
-		this.nom = nom;
-		this.duree = duree;
 	}
-
+	
 	public String getCodeFilm() {
 		return codeFilm;
 	}
@@ -77,11 +68,11 @@ public class Film {
 		this.genre = genre;
 	}
 
-	public Date getDateSortie() {
+	public String getDateSortie() {
 		return dateSortie;
 	}
 
-	public void setDateSortie(Date dateSortie) {
+	public void setDateSortie(String dateSortie) {
 		this.dateSortie = dateSortie;
 	}
 
@@ -115,6 +106,14 @@ public class Film {
 
 	public void setAffiche(String affiche) {
 		this.affiche = affiche;
+	}
+	
+	public String getDirecteur() {
+		return directeur;
+	}
+
+	public void setDirecteur(String directeur) {
+		this.directeur = directeur;
 	}
 
 	public String getScenariste() {
