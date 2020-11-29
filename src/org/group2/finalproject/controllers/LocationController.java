@@ -3,6 +3,8 @@ package org.group2.finalproject.controllers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,13 +16,18 @@ public class LocationController {
 	private ArrayList<DisqueLouer> listeLocations = new ArrayList<>();
 
 	// Louer un film
-	public void louerFilm(DisqueLouer disque) {
+	public void louerFilm(DisqueLouer disque) throws ParseException {
 		// TODO Ajouter le reste
-		String query = "INSERT INTO DisqueLouer ()  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO DisqueLouer (NumeroTelephoneClient, CodeDisque, DateLouer, DateRetour, DateDu" +
+			")  VALUES (?, ?, ?, ?, ?)";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, disque.getCodeClient());
+			statement.setString(2, disque.getCodeDisque());
+			statement.setString(3, disque.getDateLouer().toString());
+			statement.setString(4, disque.getDateRetour().toString());
+			statement.setString(5, disque.getDateDu().toString());
 			updateLocationListe();
 		}
 		catch(SQLException e) {
@@ -32,7 +39,7 @@ public class LocationController {
 	}
 	
 	// R�server un film
-	public void reserveFilm(DisqueLouer disque) {
+	public void reserveFilm(DisqueLouer disque) throws ParseException {
 		// TODO Ajouter le reste
 		String query = "UPDATE Membres SET NomClient=? WHERE SOMETHING_TO=?";
 		try {
@@ -52,7 +59,7 @@ public class LocationController {
 	
 	
 	// Retourner un film 
-	public void retourFilm() {
+	public void retourFilm() throws ParseException {
 		String query = "";
 		try {
 			ConnexionDB.initConnexion();
@@ -68,7 +75,7 @@ public class LocationController {
 	}
 	
 	// Afficher la liste complete
-	public void updateLocationListe() {
+	public void updateLocationListe() throws ParseException {
 		String query = "SELECT * FROM DisqueLouer";
 		try {
 			ConnexionDB.initConnexion();
@@ -80,16 +87,14 @@ public class LocationController {
 			
 		    listeLocations.clear();
 			while (result.next()){
-			    String codeClient = result.getString("");
-			    String codeDisque = result.getString("");
-			    Date dateLouer = result.getDate("");
-			    Date dateRetour = result.getDate("");
-			    Date dateDu = result.getDate("");
+			    String codeClient = result.getString("NumeroTelephoneClient");
+			    System.out.println(result.getString("NumeroTelephoneClient"));
+			    String codeDisque = result.getString("CodeDisque");
+			    Date dateLouer = new SimpleDateFormat("dd/MM/yyyy").parse(result.getString("DateLouer"));
+			    Date dateRetour = new SimpleDateFormat("dd/MM/yyyy").parse(result.getString("DateRetour"));
+			    Date dateDu = new SimpleDateFormat("dd/MM/yyyy").parse(result.getString("DateDu"));
 			    
 			    listeLocations.add(new DisqueLouer(codeClient, codeDisque, dateLouer, dateRetour, dateDu));
-			 
-			    String output = "User #%d: %s - %s - %s - %s - %s";
-			    System.out.println(String.format(output, ++count, codeClient, codeDisque, dateLouer, dateRetour, dateDu));
 			}  
 		}
 		catch(SQLException e) {
@@ -110,7 +115,7 @@ public class LocationController {
 	}
 	
 	public String[][] getListeLocationsData(){
-		String data[][] = new String[listeLocations.size()][9];
+		String data[][] = new String[listeLocations.size()][5];
 		
 		for(int i = 0; i < listeLocations.size(); i++)
 		{

@@ -1,9 +1,12 @@
 package org.group2.finalproject;
 
+import java.text.ParseException;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import org.group2.finalproject.controllers.LocationController;
 
@@ -13,12 +16,14 @@ public class LocationManagement extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @throws ParseException 
 	 */
-	public LocationManagement() {
+	public LocationManagement() throws ParseException {
 		setLayout(null);
 		controller = new LocationController();
 
 		tblFilms = new JTable();
+		controller.updateLocationListe();
 		//tblClient.setBounds(142, 11, 298, 278);
 		
 		JScrollPane scrollPane = new JScrollPane(tblFilms);
@@ -45,6 +50,7 @@ public class LocationManagement extends JPanel {
 		btnShowAll.setBounds(10, 142, 122, 23);
 		add(btnShowAll);
 		btnShowAll.addActionListener(e -> afficherDisque());
+		updateTableData();
 	}
 	
 	public void louerDisqueDialog() {
@@ -64,6 +70,12 @@ public class LocationManagement extends JPanel {
 	
 	public void afficherDisque() {
 		System.out.println("Afficher tout");
+	}
+	
+	private void updateTableData()
+	{
+		tblFilms.setModel(new DefaultTableModel(controller.getListeLocationsData(), new String[]{"Code Client", "Code Disque","Date Louer", 
+				"Date Du", "Date Retour"}));
 	}
 
 }
