@@ -4,10 +4,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import org.group2.finalproject.controllers.FilmController;
 
 public class FilmManagement extends JPanel {
+	
 	private JTable tblFilms;
 	private FilmController controller;
 
@@ -22,7 +24,7 @@ public class FilmManagement extends JPanel {
 		//tblClient.setBounds(142, 11, 298, 278);
 		
 		JScrollPane scrollPane = new JScrollPane(tblFilms);
-		scrollPane.setBounds(142, 11, 600, 400);
+		scrollPane.setBounds(142, 50, 600, 400);
 		add(scrollPane);
 		//add(tblClient);
 		
@@ -41,6 +43,18 @@ public class FilmManagement extends JPanel {
 		JButton btnShowAll = new JButton("Afficher tout");
 		btnShowAll.setBounds(10, 142, 122, 23);
 		add(btnShowAll);
+		
+		
+		// search to find film in db
+		JTextField search = new JTextField("recherche film");
+		search.setBounds(142, 11, 450, 25);
+		add(search);
+		
+		JButton btnSearch = new JButton("recherche");
+		btnSearch.setBounds(600, 12, 122, 25);
+		add(btnSearch);
+		
+		
 	}
 
 }

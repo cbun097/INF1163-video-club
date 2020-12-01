@@ -15,11 +15,13 @@ public class Start
 		ClientManagement client = new ClientManagement();
 		FilmManagement film = new FilmManagement();
 		LocationManagement location = new LocationManagement();
+		InventoryManagement inventaire = new InventoryManagement();
 		
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Clients", client);
 		tabbedPane.addTab("Films", film);
 		tabbedPane.addTab("Locations", location);
+		tabbedPane.addTab("Inventaire", inventaire);
         f.setContentPane(tabbedPane);
 		f.setVisible(true);
 		// Oops forgot to add that, now the process ends when you close the thing xD

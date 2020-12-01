@@ -12,7 +12,7 @@ public class LocationManagement extends JPanel {
 	private LocationController controller;
 
 	/**
-	 * Create the panel.
+	 * Create the panel.d
 	 */
 	public LocationManagement() {
 		setLayout(null);
