@@ -36,7 +36,7 @@ public class ClientManagement extends JPanel
 		updateTableData();
 		
 		JScrollPane scrollPane = new JScrollPane(tblClient);
-		scrollPane.setBounds(142, 11, 600, 400);
+		scrollPane.setBounds(142, 50, 600, 400);
 		add(scrollPane);
 		
 		JButton btnAdd = new JButton("Ajouter");
@@ -78,6 +78,15 @@ public class ClientManagement extends JPanel
 					modalCodeSecret.setText(Integer.toString(membre.getCodeSecret()));
 			}
 		});
+		
+		// search to find film in db
+				JTextField search = new JTextField("recherche client");
+				search.setBounds(142, 11, 450, 25);
+				add(search);
+				
+				JButton btnSearch = new JButton("recherche");
+				btnSearch.setBounds(600, 12, 122, 25);
+				add(btnSearch);
 	}
 	
 	// Methode pour Ajouter un membre
