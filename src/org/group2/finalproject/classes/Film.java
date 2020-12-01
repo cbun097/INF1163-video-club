@@ -1,7 +1,5 @@
 package org.group2.finalproject.classes;
 
-import java.util.Date;
-
 public class Film {
 	
 	String codeFilm;
@@ -12,7 +10,7 @@ public class Film {
 	Boolean estNouveau;
 	String duree;
 	String pays;
-	String affiche;
+	String affiche; // did not display
 	String directeur;
 	String scenariste;
 	String scenario;
