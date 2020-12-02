@@ -71,7 +71,7 @@ public class FilmManagement extends JPanel {
 		modalGenreField = new JComboBox<>();
 		modalGenreField.addItem("Action");
 		modalGenreField.addItem("Aventure");
-		modalGenreField.addItem("Comédie");
+		modalGenreField.addItem("Comedie");
 		modalGenreField.addItem("Crime");
 		modalGenreField.addItem("Drama");
 		modalGenreField.addItem("Horreur");
@@ -101,8 +101,7 @@ public class FilmManagement extends JPanel {
 				    	 .findAny()
 				    	 .orElse(null);
 					modalNomField.setText(film.getNom());
-					// TODO Add methode to get the index
-					//modalGenreField.setSelectedIndex(film.getGenre());
+					modalGenreField.setSelectedItem(film.getGenre());
 					modalDateSortie.setText(film.getDateSortie());
 					modalDureeField.setText(film.getDuree());
 					modalPaysField.setText(film.getPays());
@@ -114,6 +113,7 @@ public class FilmManagement extends JPanel {
 					modalPrixVenteField.setText(Double.toString(film.getPrixVente()));
 					modalPrixSemaineField.setText(Double.toString(film.getPrixSemaine()));
 					modalPrixVenteField.setText(Double.toString(film.getPrixVente()));
+					modalPrixJourneeField.setText(Double.toString(film.getPrixJournee()));
 			}
 		});
 	}
@@ -154,7 +154,7 @@ public class FilmManagement extends JPanel {
 			    	 .findAny()
 			    	 .orElse(null);
 			filmSelected.setNom(modalNomField.getText());
-			filmSelected.setGenre(modalGenreField.getName());
+			filmSelected.setGenre((String) modalGenreField.getSelectedItem());
 			filmSelected.setEstNouveau(modalEstNouveauField.isSelected());
 			filmSelected.setDuree(modalDureeField.getText());
 			filmSelected.setPays(modalPaysField.getText());
@@ -199,17 +199,32 @@ public class FilmManagement extends JPanel {
 		
 	private void updateTableFilms() {
 		tblFilms.setModel(new DefaultTableModel(controller.getListeFilmsData(), new String[]
-				{"Code Film", "Nom", "Genre", "Date de sortie", "Est nouveau", "Durée", "Pays", "Directeur", "Scenario"
-						, "Scenario", "QuantiteDVD", "QuantiteBluRay", "Prix Vente", "Prix Semaine", "Prix Journée"}));
+				{"Code Film", "Nom", "Genre", "Date de sortie", "Est nouveau", "Duree", "Pays", "Directeur", "Scenario"
+						, "Scenario", "QuantiteDVD", "QuantiteBluRay", "Prix Vente", "Prix Semaine", "Prix Journee"}));
 	}
 	
-	public JPanel FilmsPanel(boolean telTextField) {
+	public JPanel FilmsPanel(boolean textField) {
 		JPanel myPanel = new JPanel();
 	    myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
+	    
+	    modalNomField.setText("");
+	    modalGenreField.setSelectedIndex(0);
+		modalDateSortie.setText("");
+		modalDureeField.setText("");
+		modalPaysField.setText("");
+		modalDirecteurField.setText("");
+		modalScenaristeField.setText("");
+		modalScenarioField.setText("");
+		modalQuantiteDVDField.setText("");
+		modalQuantiteBlurayField.setText("");
+		modalPrixVenteField.setText("");
+		modalPrixSemaineField.setText("");
+		modalPrixVenteField.setText("");
+		modalPrixJourneeField.setText("");
 		    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("CodeFilm:"));
-	    if(telTextField)
+	    if(textField)
 	    {
 	    	modalCodeFilmField.setText("");
 	    	myPanel.add(modalCodeFilmField);
@@ -264,11 +279,11 @@ public class FilmManagement extends JPanel {
 	    myPanel.add(modalScenarioField);
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Quantité DVD:"));
+	    myPanel.add(new JLabel("Quantite DVD:"));
 	    myPanel.add(modalQuantiteDVDField);
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Quantité Bluray:"));
+	    myPanel.add(new JLabel("Quantite Bluray:"));
 	    myPanel.add(modalQuantiteBlurayField);
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
@@ -280,7 +295,7 @@ public class FilmManagement extends JPanel {
 	    myPanel.add(modalPrixSemaineField);
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Prix journée:"));
+	    myPanel.add(new JLabel("Prix journee:"));
 	    myPanel.add(modalPrixJourneeField);
 	    
 	    return myPanel;

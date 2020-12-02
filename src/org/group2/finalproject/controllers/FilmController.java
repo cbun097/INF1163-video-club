@@ -14,7 +14,7 @@ public class FilmController {
 
 	// Ajouter un nouveau film
 	public void ajouterFilm(Film f) {
-		String query = "INSERT INTO Film (CodeFilm, Nom, Genre, DateSortie, EstNouveau, Durée, Pays, Directeur,"
+		String query = "INSERT INTO Film (CodeFilm, Nom, Genre, DateSortie, EstNouveau, Duree, Pays, Directeur,"
 				+ "Scenariste, Scenario, QuantiteDVD, QuantiteBluRay, PrixVente, PrixSemaine, PrixJournee) VALUES (?, ?, ?,"
 				+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
@@ -50,7 +50,7 @@ public class FilmController {
 	
 	// Modifier un film
 	public void modifierFilm(Film f) {
-		String query = "UPDATE Film SET Nom=?,Genre=?, DateSortie=?, EstNouveau=?, Durée=?, Pays=?,"
+		String query = "UPDATE Film SET Nom=?,Genre=?, DateSortie=?, EstNouveau=?, Duree=?, Pays=?,"
 				+ "Directeur=?, Scenariste=?, Scenario=?, QuantiteDVD=?, QuantiteBluRay=?, PrixVente=?,"
 				+ "PrixSemaine=?, PrixJournee=? WHERE CodeFilm=?";
 		try {
@@ -72,7 +72,7 @@ public class FilmController {
 			statement.setDouble(13, f.getPrixSemaine());
 			statement.setDouble(14, f.getPrixJournee());
 			statement.setString(15, f.getCodeFilm());
-			System.out.println("Film modifié avec succ�s!");
+			System.out.println("Film modifie avec succes!");
 			statement.executeUpdate();
 			updateFilmsListe();
 		}
@@ -122,7 +122,7 @@ public class FilmController {
 				// TODO String dans la BD changer pour DATE
 				String dateSorite = result.getString("DateSortie");
 				Boolean estNouveau = result.getBoolean("EstNouveau");
-				String duree  = result.getString("Durée");
+				String duree  = result.getString("Duree");
 				String pays = result.getString("Pays"); 
 				String directeur = result.getString("Directeur");
 				String scenariste = result.getString("Scenariste");
@@ -136,7 +136,7 @@ public class FilmController {
 				listeFilm.add(new Film(codeFilm,nom,genre,dateSorite,estNouveau, duree, pays, directeur,scenario,
 						scenariste, quantiteDVD, quantiteBluRay, prixVente, prixSemaine, prixJournee));
 			}
-			System.out.println("Liste des films mise � jour");
+			System.out.println("Liste des films mise a jour");
 		}
 		catch(SQLException e){
 			System.out.println("Afficher la liste des films erreur: " + e);
