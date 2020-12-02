@@ -1,43 +1,38 @@
 package org.group2.finalproject.classes;
 
-import java.util.Date;
-
 public class Film {
 	
 	String codeFilm;
 	String nom; 
 	String genre;
-	Date dateSortie;
-	String desription;
+	// TODO String dans la BD changer pour DATE
+	String dateSortie;
 	Boolean estNouveau;
 	String duree;
 	String pays;
-	String affiche;
-	String director;
+	String affiche; // did not display
+	String directeur;
 	String scenariste;
-	String scenario; // dunno
+	String scenario;
 	int quantiteDVD;
 	int quantiteBluray;
 	double prixVente;
 	double prixSemaine;
 	double prixJournee;
-	// manque les acteurs
 	
-	
-	/**public Film(String codeFilm, String nom, String genre, Date dateSortie, String desription, Boolean estNouveau,
-			String duree, String pays, String affiche, String director, String scenariste, String scenario,
+	// remove affiche
+	public Film(String codeFilm, String nom, String genre, String dateSortie, Boolean estNouveau,
+			String duree, String pays, String directeur, String scenariste, String scenario,
 			int quantiteDVD, int quantiteBluray, double prixVente, double prixSemaine, double prixJournee) {
 		super();
 		this.codeFilm = codeFilm;
 		this.nom = nom;
 		this.genre = genre;
 		this.dateSortie = dateSortie;
-		this.desription = desription;
 		this.estNouveau = estNouveau;
 		this.duree = duree;
 		this.pays = pays;
-		this.affiche = affiche;
-		this.director = director;
+		this.directeur = directeur;
 		this.scenariste = scenariste;
 		this.scenario = scenario;
 		this.quantiteDVD = quantiteDVD;
@@ -45,14 +40,8 @@ public class Film {
 		this.prixVente = prixVente;
 		this.prixSemaine = prixSemaine;
 		this.prixJournee = prixJournee;
-	}*/
-	
-	// new contructor for testing purposes only
-	public Film(String codeFilm, String nom) {
-		this.codeFilm = codeFilm;
-		this.nom = nom;
 	}
-
+	
 	public String getCodeFilm() {
 		return codeFilm;
 	}
@@ -77,20 +66,12 @@ public class Film {
 		this.genre = genre;
 	}
 
-	public Date getDateSortie() {
+	public String getDateSortie() {
 		return dateSortie;
 	}
 
-	public void setDateSortie(Date dateSortie) {
+	public void setDateSortie(String dateSortie) {
 		this.dateSortie = dateSortie;
-	}
-
-	public String getDesription() {
-		return desription;
-	}
-
-	public void setDesription(String desription) {
-		this.desription = desription;
 	}
 
 	public Boolean getEstNouveau() {
@@ -124,13 +105,13 @@ public class Film {
 	public void setAffiche(String affiche) {
 		this.affiche = affiche;
 	}
-
-	public String getDirector() {
-		return director;
+	
+	public String getDirecteur() {
+		return directeur;
 	}
 
-	public void setDirector(String director) {
-		this.director = director;
+	public void setDirecteur(String directeur) {
+		this.directeur = directeur;
 	}
 
 	public String getScenariste() {
@@ -189,14 +170,13 @@ public class Film {
 		this.prixJournee = prixJournee;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Film [codeFilm=" + codeFilm + ", nom=" + nom + ", genre=" + genre + ", dateSortie=" + dateSortie
-				+ ", desription=" + desription + ", estNouveau=" + estNouveau + ", duree=" + duree + ", pays=" + pays
-				+ ", affiche=" + affiche + ", director=" + director + ", scenariste=" + scenariste + ", scenario="
-				+ scenario + ", quantiteDVD=" + quantiteDVD + ", quantiteBluray=" + quantiteBluray + ", prixVente="
-				+ prixVente + ", prixSemaine=" + prixSemaine + ", prixJournee=" + prixJournee + "]";
+				+ ", estNouveau=" + estNouveau + ", duree=" + duree + ", pays=" + pays + ", affiche=" + affiche
+				+ ", directeur=" + directeur + ", scenariste=" + scenariste + ", scenario=" + scenario
+				+ ", quantiteDVD=" + quantiteDVD + ", quantiteBluray=" + quantiteBluray + ", prixVente=" + prixVente
+				+ ", prixSemaine=" + prixSemaine + ", prixJournee=" + prixJournee + "]";
 	}
-
+	
 }
