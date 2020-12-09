@@ -1,20 +1,18 @@
 package org.group2.finalproject.classes;
 
-import java.sql.Date;
-
 public class Film {
 	
 	String CodeFilm;
 	String Nom; 
 	String Genre;
-	Date DateSortie;
+	String DateSortie;
 	Boolean EstNouveau;
 	String Duree;
 	String Pays;
 	String Directeur;
 	String Scenario;
 	
-	public Film(String codeFilm, String nom, String genre, Date dateSortie, Boolean estNouveau, String duree,
+	public Film(String codeFilm, String nom, String genre, String dateSortie, Boolean estNouveau, String duree,
 			String pays, String directeur, String scenario) {
 		super();
 		CodeFilm = codeFilm;
@@ -52,11 +50,11 @@ public class Film {
 		Genre = genre;
 	}
 
-	public Date getDateSortie() {
+	public String getDateSortie() {
 		return DateSortie;
 	}
 
-	public void setDateSortie(Date dateSortie) {
+	public void setDateSortie(String dateSortie) {
 		DateSortie = dateSortie;
 	}
 

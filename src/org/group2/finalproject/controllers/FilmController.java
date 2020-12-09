@@ -26,7 +26,7 @@ public class FilmController {
 			statement.setString(1, f.getCodeFilm());
 			statement.setString(2, f.getNom());
 			statement.setString(3, f.getGenre());
-			statement.setDate(4, f.getDateSortie());
+			statement.setString(4, f.getDateSortie());
 			statement.setBoolean(5, f.getEstNouveau());
 			statement.setString(6, f.getDuree());
 			statement.setString(7, f.getPays());
@@ -52,7 +52,7 @@ public class FilmController {
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, f.getNom());
 			statement.setString(2, f.getGenre());
-			statement.setDate(3, f.getDateSortie());
+			statement.setString(3, f.getDateSortie());
 			statement.setBoolean(4, f.getEstNouveau());
 			statement.setString(5, f.getDuree());
 			statement.setString(6, f.getPays());
@@ -106,7 +106,7 @@ public class FilmController {
 				String codeFilm = result.getString("CodeFilm");
 				String nom = result.getString("Nom");
 				String genre = result.getString("Genre");
-				Date dateSorite = result.getDate("DateSortie");
+				String dateSorite = result.getString("DateSortie");
 				Boolean estNouveau = result.getBoolean("EstNouveau");
 				String duree  = result.getString("Duree");
 				String pays = result.getString("Pays"); 
@@ -132,13 +132,13 @@ public class FilmController {
 	
 	public String[][]  getListeFilmsData() {
 		String data[][] = new String[listeFilm.size()][9];
-		DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+		
 		for(int i = 0; i< listeFilm.size(); i++) {
 			Film f = listeFilm.get(i);
 			data[i][0] = f.getCodeFilm();
 			data[i][1] = f.getNom();
 			data[i][2] = f.getGenre();
-			data[i][3] = dt.format(f.getDateSortie());
+			data[i][3] = f.getDateSortie();
 			data[i][4] = Boolean.toString(f.getEstNouveau());
 			data[i][5] = f.getDuree();
 			data[i][6] = f.getPays();

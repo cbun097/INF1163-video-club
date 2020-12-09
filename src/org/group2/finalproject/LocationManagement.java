@@ -63,11 +63,9 @@ public class LocationManagement extends JPanel {
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Louer un film", JOptionPane.OK_CANCEL_OPTION);
 		 if (result == JOptionPane.OK_OPTION) 
 		    {
-			 	// TODO: Fix date format
-			 	Date date = new SimpleDateFormat("dd/MM/yyyy");
-		    	Location location = new Location(modalNumeroTel.getText(), modalCodeDisque.getText(), date.valueOf(modalDateLouerField.getText()), 
-		    			date.valueOf(modalDateRetourField.getText()),
-		    			date.valueOf(modalDateDuField.getText()), Double.parseDouble(modalRetardMontantDu.getText()));
+		    	Location location = new Location(modalNumeroTel.getText(), modalCodeDisque.getText(), modalDateLouerField.getText(), 
+		    			modalDateRetourField.getText(),
+		    			modalDateDuField.getText(), Double.parseDouble(modalRetardMontantDu.getText()));
 		    	controller.louerFilm(location);
 		    	System.out.print("Ajouter loc succ");
 		    	updateTableData();

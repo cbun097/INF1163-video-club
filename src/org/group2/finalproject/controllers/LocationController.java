@@ -22,9 +22,9 @@ public class LocationController {
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, location.getNumeroTelephone());
 			statement.setString(2, location.getCodeDisque());
-			statement.setDate(3, location.getDateLouer());
-			statement.setDate(4, location.getDateRetour());
-			statement.setDate(5, location.getDateDu());
+			statement.setString(3, location.getDateLouer());
+			statement.setString(4, location.getDateRetour());
+			statement.setString(5, location.getDateDu());
 			statement.setDouble(6, location.getMontantRetardDu());
 			updateLocationListe();
 		}
@@ -45,9 +45,9 @@ public class LocationController {
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, location.getNumeroTelephone());
 			statement.setString(2, location.getCodeDisque());
-			statement.setDate(3, location.getDateLouer());
-			statement.setDate(4, location.getDateRetour());
-			statement.setDate(5, location.getDateDu());
+			statement.setString(3, location.getDateLouer());
+			statement.setString(4, location.getDateRetour());
+			statement.setString(5, location.getDateDu());
 			statement.setDouble(6, location.getMontantRetardDu());
 			updateLocationListe();
 		}
@@ -90,12 +90,12 @@ public class LocationController {
 			
 		    listeLocations.clear();
 			while (result.next()){
-		    	String numTel = result.getString("");
-		    	String codeDisque = result.getString("");
-		    	Date dateLouer = result.getDate("");
-		    	Date dateRetour = result.getDate("");
-		    	Date dateDu = result.getDate("");
-		    	Double montantRetardDu = result.getDouble("");
+		    	String numTel = result.getString("NumeroTelephone");
+		    	String codeDisque = result.getString("CodeDisque");
+		    	String dateLouer = result.getString("DateLouer");
+		    	String dateRetour = result.getString("DateRetour");
+		    	String dateDu = result.getString("DateDu");
+		    	Double montantRetardDu = result.getDouble("MontantRetardDu");
 			    listeLocations.add(new Location(numTel, codeDisque, dateLouer, dateRetour, dateDu, montantRetardDu));
 			 
 			    String output = "User #%d: %s - %s - %s - %s - %s";

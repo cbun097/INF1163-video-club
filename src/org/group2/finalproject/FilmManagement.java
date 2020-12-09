@@ -130,6 +130,7 @@ public class FilmManagement extends JPanel {
 			    	 .orElse(null);
 			filmSelected.setNom(modalNomField.getText());
 			filmSelected.setGenre((String) modalGenreField.getSelectedItem());
+			filmSelected.setDateSortie(modalDateSortie.getText());
 			filmSelected.setEstNouveau(modalEstNouveauField.isSelected());
 			filmSelected.setDuree(modalDureeField.getText());
 			filmSelected.setPays(modalPaysField.getText());
@@ -168,8 +169,7 @@ public class FilmManagement extends JPanel {
 		
 	private void updateTableFilms() {
 		tblFilms.setModel(new DefaultTableModel(controller.getListeFilmsData(), new String[]
-				{"Code Film", "Nom", "Genre", "Date de sortie", "Est nouveau", "Duree", "Pays", "Directeur", "Scenario"
-						, "Scenario", "QuantiteDVD", "QuantiteBluRay", "Prix Vente", "Prix Semaine", "Prix Journee"}));
+				{"Code Film", "Nom", "Genre", "Date de sortie", "Est nouveau", "Duree", "Pays", "Directeur", "Scenario"}));
 	}
 	
 	public JPanel FilmsPanel(boolean textField) {

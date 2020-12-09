@@ -1,17 +1,15 @@
 package org.group2.finalproject.classes;
 
-import java.sql.Date;
-
 public class Location {
 	
 	String NumeroTelephone;
 	String CodeDisque;
-	Date DateLouer;
-	Date DateRetour;
-	Date DateDu;
+	String DateLouer;
+	String DateRetour;
+	String DateDu;
 	double MontantRetardDu;
 	
-	public Location(String numeroTelephone, String codeDisque, Date dateLouer, Date dateRetour, Date dateDu, double montantRetardDu) {
+	public Location(String numeroTelephone, String codeDisque, String dateLouer, String dateRetour, String dateDu, double montantRetardDu) {
 		super();
 		NumeroTelephone = numeroTelephone;
 		CodeDisque = codeDisque;
@@ -37,27 +35,27 @@ public class Location {
 		CodeDisque = codeDisque;
 	}
 
-	public Date getDateLouer() {
+	public String getDateLouer() {
 		return DateLouer;
 	}
 
-	public void setDateLouer(Date dateLouer) {
+	public void setDateLouer(String dateLouer) {
 		DateLouer = dateLouer;
 	}
 	
-	public Date getDateRetour() {
+	public String getDateRetour() {
 		return DateRetour;
 	}
 
-	public void setDateRetour(Date dateRetour) {
+	public void setDateRetour(String dateRetour) {
 		DateRetour = dateRetour;
 	}
 
-	public Date getDateDu() {
+	public String getDateDu() {
 		return DateDu;
 	}
 
-	public void setDateDu(Date dateDu) {
+	public void setDateDu(String dateDu) {
 		DateDu = dateDu;
 	}
 
