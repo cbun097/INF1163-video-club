@@ -1,99 +1,79 @@
 package org.group2.finalproject.classes;
 
 public class Membre {
-	String numeroTelephone;
-	String nomClient;
-	String adresseCourriel;
-	String adresseDomicile;
-	Boolean estMembre; 
-	String carteDeCredit;
-	int codeSecret;
-	double montantDu;
+	String NomClient;
+	String AdresseCourriel;
+	String AdresseDomicile;
+	String NumeroTelephone;
+	Boolean EstMembre;
+	String CarteDeCredit;
+	int CodeSecret;
 	
-	public Membre(String numeroTelephone, String nomClient, String adresseCourriel, String adresseDomicile,
-			 Boolean estMembre, String carteDeCredit, int codeSecret, double montantDu) {
+	public Membre(String nomClient, String adresseCourriel, String adresseDomicile, String numeroTelephone,
+			Boolean estMembre, String carteDeCredit, int codeSecret) {
 		super();
-		this.numeroTelephone = numeroTelephone;
-		this.nomClient = nomClient;
-		this.adresseCourriel = adresseCourriel;
-		this.adresseDomicile = adresseDomicile;
-		this.estMembre = estMembre;
-		this.carteDeCredit = carteDeCredit;
-		this.codeSecret = codeSecret;
-		this.montantDu = montantDu;
-	}
-	
-	public String getNumeroTelephone() {
-		return numeroTelephone;
-	}
-
-	public void setNumeroTelephone(String numeroTelephone) {
-		this.numeroTelephone = numeroTelephone;
+		NomClient = nomClient;
+		AdresseCourriel = adresseCourriel;
+		AdresseDomicile = adresseDomicile;
+		NumeroTelephone = numeroTelephone;
+		EstMembre = estMembre;
+		CarteDeCredit = carteDeCredit;
+		CodeSecret = codeSecret;
 	}
 
 	public String getNomClient() {
-		return nomClient;
+		return NomClient;
 	}
 
 	public void setNomClient(String nomClient) {
-		this.nomClient = nomClient;
+		NomClient = nomClient;
 	}
 
 	public String getAdresseCourriel() {
-		return adresseCourriel;
+		return AdresseCourriel;
 	}
 
 	public void setAdresseCourriel(String adresseCourriel) {
-		this.adresseCourriel = adresseCourriel;
+		AdresseCourriel = adresseCourriel;
 	}
 
 	public String getAdresseDomicile() {
-		return adresseDomicile;
+		return AdresseDomicile;
 	}
 
 	public void setAdresseDomicile(String adresseDomicile) {
-		this.adresseDomicile = adresseDomicile;
+		AdresseDomicile = adresseDomicile;
+	}
+
+	public String getNumeroTelephone() {
+		return NumeroTelephone;
+	}
+
+	public void setNumeroTelephone(String numeroTelephone) {
+		NumeroTelephone = numeroTelephone;
 	}
 
 	public Boolean getEstMembre() {
-		return estMembre;
+		return EstMembre;
 	}
 
 	public void setEstMembre(Boolean estMembre) {
-		this.estMembre = estMembre;
+		EstMembre = estMembre;
 	}
 
 	public String getCarteDeCredit() {
-		return carteDeCredit;
+		return CarteDeCredit;
 	}
 
 	public void setCarteDeCredit(String carteDeCredit) {
-		this.carteDeCredit = carteDeCredit;
+		CarteDeCredit = carteDeCredit;
 	}
 
 	public int getCodeSecret() {
-		return codeSecret;
+		return CodeSecret;
 	}
 
 	public void setCodeSecret(int codeSecret) {
-		this.codeSecret = codeSecret;
+		CodeSecret = codeSecret;
 	}
-
-	public double getMontantDu() {
-		return montantDu;
-	}
-
-	public void setMontantDu(double montantDu) {
-		this.montantDu = montantDu;
-	}
-
-	@Override
-	public String toString() {
-		return "Membre [numeroTelephone=" + numeroTelephone + ", nomClient=" + nomClient + ", adresseCourriel=" + adresseCourriel
-				+ ", adresseDomicile=" + adresseDomicile
-				+ ", estMembre=" + estMembre + ", carteDeCredit=" + carteDeCredit + ", codeSecret=" + codeSecret
-				+ ", montantDu=" + montantDu + "]";
-	}
-	
-	
 }

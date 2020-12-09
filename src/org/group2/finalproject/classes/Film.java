@@ -1,182 +1,102 @@
 package org.group2.finalproject.classes;
 
+import java.sql.Date;
+
 public class Film {
 	
-	String codeFilm;
-	String nom; 
-	String genre;
-	// TODO String dans la BD changer pour DATE
-	String dateSortie;
-	Boolean estNouveau;
-	String duree;
-	String pays;
-	String affiche; // did not display
-	String directeur;
-	String scenariste;
-	String scenario;
-	int quantiteDVD;
-	int quantiteBluray;
-	double prixVente;
-	double prixSemaine;
-	double prixJournee;
+	String CodeFilm;
+	String Nom; 
+	String Genre;
+	Date DateSortie;
+	Boolean EstNouveau;
+	String Duree;
+	String Pays;
+	String Directeur;
+	String Scenario;
 	
-	// remove affiche
-	public Film(String codeFilm, String nom, String genre, String dateSortie, Boolean estNouveau,
-			String duree, String pays, String directeur, String scenariste, String scenario,
-			int quantiteDVD, int quantiteBluray, double prixVente, double prixSemaine, double prixJournee) {
+	public Film(String codeFilm, String nom, String genre, Date dateSortie, Boolean estNouveau, String duree,
+			String pays, String directeur, String scenario) {
 		super();
-		this.codeFilm = codeFilm;
-		this.nom = nom;
-		this.genre = genre;
-		this.dateSortie = dateSortie;
-		this.estNouveau = estNouveau;
-		this.duree = duree;
-		this.pays = pays;
-		this.directeur = directeur;
-		this.scenariste = scenariste;
-		this.scenario = scenario;
-		this.quantiteDVD = quantiteDVD;
-		this.quantiteBluray = quantiteBluray;
-		this.prixVente = prixVente;
-		this.prixSemaine = prixSemaine;
-		this.prixJournee = prixJournee;
+		CodeFilm = codeFilm;
+		Nom = nom;
+		Genre = genre;
+		DateSortie = dateSortie;
+		EstNouveau = estNouveau;
+		Duree = duree;
+		Pays = pays;
+		Directeur = directeur;
+		Scenario = scenario;
 	}
-	
+
 	public String getCodeFilm() {
-		return codeFilm;
+		return CodeFilm;
 	}
 
 	public void setCodeFilm(String codeFilm) {
-		this.codeFilm = codeFilm;
+		CodeFilm = codeFilm;
 	}
 
 	public String getNom() {
-		return nom;
+		return Nom;
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		Nom = nom;
 	}
 
 	public String getGenre() {
-		return genre;
+		return Genre;
 	}
 
 	public void setGenre(String genre) {
-		this.genre = genre;
+		Genre = genre;
 	}
 
-	public String getDateSortie() {
-		return dateSortie;
+	public Date getDateSortie() {
+		return DateSortie;
 	}
 
-	public void setDateSortie(String dateSortie) {
-		this.dateSortie = dateSortie;
+	public void setDateSortie(Date dateSortie) {
+		DateSortie = dateSortie;
 	}
 
 	public Boolean getEstNouveau() {
-		return estNouveau;
+		return EstNouveau;
 	}
 
 	public void setEstNouveau(Boolean estNouveau) {
-		this.estNouveau = estNouveau;
+		EstNouveau = estNouveau;
 	}
 
 	public String getDuree() {
-		return duree;
+		return Duree;
 	}
 
 	public void setDuree(String duree) {
-		this.duree = duree;
+		Duree = duree;
 	}
 
 	public String getPays() {
-		return pays;
+		return Pays;
 	}
 
 	public void setPays(String pays) {
-		this.pays = pays;
+		Pays = pays;
 	}
 
-	public String getAffiche() {
-		return affiche;
-	}
-
-	public void setAffiche(String affiche) {
-		this.affiche = affiche;
-	}
-	
 	public String getDirecteur() {
-		return directeur;
+		return Directeur;
 	}
 
 	public void setDirecteur(String directeur) {
-		this.directeur = directeur;
-	}
-
-	public String getScenariste() {
-		return scenariste;
-	}
-
-	public void setScenariste(String scenariste) {
-		this.scenariste = scenariste;
+		Directeur = directeur;
 	}
 
 	public String getScenario() {
-		return scenario;
+		return Scenario;
 	}
 
 	public void setScenario(String scenario) {
-		this.scenario = scenario;
+		Scenario = scenario;
 	}
-
-	public int getQuantiteDVD() {
-		return quantiteDVD;
-	}
-
-	public void setQuantiteDVD(int quantiteDVD) {
-		this.quantiteDVD = quantiteDVD;
-	}
-
-	public int getQuantiteBluray() {
-		return quantiteBluray;
-	}
-
-	public void setQuantiteBluray(int quantiteBluray) {
-		this.quantiteBluray = quantiteBluray;
-	}
-
-	public double getPrixVente() {
-		return prixVente;
-	}
-
-	public void setPrixVente(double prixVente) {
-		this.prixVente = prixVente;
-	}
-
-	public double getPrixSemaine() {
-		return prixSemaine;
-	}
-
-	public void setPrixSemaine(double prixSemaine) {
-		this.prixSemaine = prixSemaine;
-	}
-
-	public double getPrixJournee() {
-		return prixJournee;
-	}
-
-	public void setPrixJournee(double prixJournee) {
-		this.prixJournee = prixJournee;
-	}
-
-	@Override
-	public String toString() {
-		return "Film [codeFilm=" + codeFilm + ", nom=" + nom + ", genre=" + genre + ", dateSortie=" + dateSortie
-				+ ", estNouveau=" + estNouveau + ", duree=" + duree + ", pays=" + pays + ", affiche=" + affiche
-				+ ", directeur=" + directeur + ", scenariste=" + scenariste + ", scenario=" + scenario
-				+ ", quantiteDVD=" + quantiteDVD + ", quantiteBluray=" + quantiteBluray + ", prixVente=" + prixVente
-				+ ", prixSemaine=" + prixSemaine + ", prixJournee=" + prixJournee + "]";
-	}
-	
 }

@@ -24,13 +24,7 @@ public class FilmManagement extends JPanel {
 	private JTextField modalDureeField;
 	private JTextField modalPaysField;
 	private JTextField modalDirecteurField;
-	private JTextField modalScenaristeField;
 	private JTextArea modalScenarioField;
-	private JTextField modalQuantiteDVDField;
-	private JTextField modalQuantiteBlurayField;
-	private JTextField modalPrixVenteField;
-	private JTextField modalPrixSemaineField;
-	private JTextField modalPrixJourneeField;
 
 	/**
 	 * Create the panel.
@@ -83,13 +77,7 @@ public class FilmManagement extends JPanel {
 		modalDureeField = new JTextField(5);
 		modalPaysField = new JTextField(5);
 		modalDirecteurField = new JTextField(5);
-		modalScenaristeField = new JTextField(5);
 		modalScenarioField = new JTextArea(10,5);
-		modalQuantiteDVDField = new JTextField(5); 
-		modalQuantiteBlurayField = new JTextField(5);
-		modalPrixVenteField = new JTextField(5); 
-		modalPrixSemaineField = new JTextField(5);
-		modalPrixJourneeField = new JTextField(5); 
 		
 		
 		modalCodeFieldSelect = new JComboBox<>();
@@ -106,14 +94,7 @@ public class FilmManagement extends JPanel {
 					modalDureeField.setText(film.getDuree());
 					modalPaysField.setText(film.getPays());
 					modalDirecteurField.setText(film.getDirecteur());
-					modalScenaristeField.setText(film.getScenariste());
 					modalScenarioField.setText(film.getScenario());
-					modalQuantiteDVDField.setText(Integer.toString(film.getQuantiteDVD()));
-					modalQuantiteBlurayField.setText(Integer.toString(film.getQuantiteBluray()));
-					modalPrixVenteField.setText(Double.toString(film.getPrixVente()));
-					modalPrixSemaineField.setText(Double.toString(film.getPrixSemaine()));
-					modalPrixVenteField.setText(Double.toString(film.getPrixVente()));
-					modalPrixJourneeField.setText(Double.toString(film.getPrixJournee()));
 			}
 		});
 	}
@@ -125,17 +106,11 @@ public class FilmManagement extends JPanel {
 		int result = JOptionPane.showConfirmDialog(null,scrollPane, "Ajouter un nouveau film", JOptionPane.OK_CANCEL_OPTION);
 	    if (result == JOptionPane.OK_OPTION) 
 	    {
-	    	int quantiteDVDValue = Integer.parseInt(modalQuantiteDVDField.getText());
-	    	int quantiteBlurayValue = Integer.parseInt(modalQuantiteBlurayField.getText());
-	    	double prixVenteValue = Double.parseDouble(modalPrixVenteField.getText());
-	    	double prixSemaineValue = Double.parseDouble(modalPrixSemaineField.getText());
-	    	double prixJourneeValue = Double.parseDouble(modalPrixJourneeField.getText());
-	    	// PAS Affiche
+	    	// TODO: Fix date format
 	    	Film film = new Film(modalCodeFilmField.getText(),modalNomField.getText(),
 	    			modalGenreField.getSelectedItem().toString(), modalDateSortie.getText(), modalEstNouveauField.isSelected(),
 	    			modalDureeField.getText(), modalPaysField.getText(), modalDirecteurField.getText(),
-	    			modalScenaristeField.getText(), modalScenarioField.getText(),quantiteDVDValue, quantiteBlurayValue,
-	    			 prixVenteValue, prixSemaineValue, prixJourneeValue);
+	    			modalScenarioField.getText());
 	    	controller.ajouterFilm(film);
 	    	updateTableFilms();
 	    }     
@@ -159,13 +134,7 @@ public class FilmManagement extends JPanel {
 			filmSelected.setDuree(modalDureeField.getText());
 			filmSelected.setPays(modalPaysField.getText());
 			filmSelected.setDirecteur(modalDirecteurField.getText());
-			filmSelected.setScenariste(modalScenaristeField.getText());
 			filmSelected.setScenario(modalScenarioField.getText());
-			filmSelected.setQuantiteDVD(Integer.parseInt(modalQuantiteDVDField.getText()));
-			filmSelected.setQuantiteBluray(Integer.parseInt(modalQuantiteBlurayField.getText()));
-			filmSelected.setPrixVente(Double.parseDouble(modalPrixVenteField.getText()));
-			filmSelected.setPrixSemaine(Double.parseDouble(modalPrixSemaineField.getText()));
-			filmSelected.setPrixJournee(Double.parseDouble(modalPrixJourneeField.getText()));
 	    	controller.modifierFilm(filmSelected);
 	    	updateTableFilms();
 	    }     
@@ -213,14 +182,7 @@ public class FilmManagement extends JPanel {
 		modalDureeField.setText("");
 		modalPaysField.setText("");
 		modalDirecteurField.setText("");
-		modalScenaristeField.setText("");
 		modalScenarioField.setText("");
-		modalQuantiteDVDField.setText("");
-		modalQuantiteBlurayField.setText("");
-		modalPrixVenteField.setText("");
-		modalPrixSemaineField.setText("");
-		modalPrixVenteField.setText("");
-		modalPrixJourneeField.setText("");
 		    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("CodeFilm:"));
@@ -271,32 +233,8 @@ public class FilmManagement extends JPanel {
 	    myPanel.add(modalDirecteurField);
 	    
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Senariste:"));
-	    myPanel.add(modalScenaristeField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Scenario:"));
 	    myPanel.add(modalScenarioField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Quantite DVD:"));
-	    myPanel.add(modalQuantiteDVDField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Quantite Bluray:"));
-	    myPanel.add(modalQuantiteBlurayField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Prix vente:"));
-	    myPanel.add(modalPrixVenteField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Prix semaine:"));
-	    myPanel.add(modalPrixSemaineField);
-	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Prix journee:"));
-	    myPanel.add(modalPrixJourneeField);
 	    
 	    return myPanel;
 	}
