@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="new model" version="4">
+  <OBJECT>
+    <ID name="new model" mc="Standard.Package" uid="a91d2213-6940-4dc1-bc7a-03f8f0efb403"/>
+    <PID name="base uml videoclub" mc="Standard.Project" uid="5b5c53b4-1825-4bb7-93d7-324d1fd3c2bc"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[new model]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Membre" mc="Standard.Class" uid="57d56394-ce33-46c9-be90-e887bcef25bc"/>
+        <COMPID name="Film" mc="Standard.Class" uid="a2ddcdee-1cac-4f6c-8c2d-03a0412608f0"/>
+        <COMPID name="Location" mc="Standard.Class" uid="7e53af20-16da-433c-a265-0b5221b90028"/>
+        <COMPID name="Disque" mc="Standard.Class" uid="4ec92b7c-7b03-48f0-a73b-07a3da6eb32e"/>
+        <COMPID name="Panier" mc="Standard.Class" uid="4a80b8b3-c29e-4287-9d27-1aa120d42cb5"/>
+        <COMPID name="ArticleVente" mc="Standard.Class" uid="2b73aa55-b352-42ab-9f87-a6d35426f54e"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="new Class diagram" mc="Standard.ClassDiagram" uid="5f3e43f5-c25f-4c39-b6eb-aa600ee01669"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

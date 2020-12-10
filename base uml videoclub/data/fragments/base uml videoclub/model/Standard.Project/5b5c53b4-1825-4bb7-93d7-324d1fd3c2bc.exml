@@ -13,6 +13,7 @@
         <COMPID name="base uml videoclub" mc="Standard.Package" uid="79339cf3-8305-4dcc-9fd1-e1877dda6caf"/>
         <COMPID name="Model" mc="Standard.Package" uid="c7d35183-8b0c-4bec-9262-ec518569a79a"/>
         <COMPID name="Model1" mc="Standard.Package" uid="2b569f66-efbe-4150-bb7d-c0bd068e6fd5"/>
+        <COMPID name="new model" mc="Standard.Package" uid="a91d2213-6940-4dc1-bc7a-03f8f0efb403"/>
       </COMP>
       <COMP relation="DiagramRoot">
         <COMPID name="base uml videoclub" mc="Infrastructure.DiagramSet" uid="216f314e-af50-44a4-84c1-20bb796bc2a2"/>

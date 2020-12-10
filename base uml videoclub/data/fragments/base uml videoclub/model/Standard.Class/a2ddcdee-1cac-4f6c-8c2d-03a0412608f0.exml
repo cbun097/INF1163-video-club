@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Film" version="4">
   <OBJECT>
-    <ID name="Film" mc="Standard.Class" uid="211228e0-6105-4bfa-afce-ba06c87f6496"/>
-    <PID name="base uml videoclub" mc="Standard.Package" uid="79339cf3-8305-4dcc-9fd1-e1877dda6caf"/>
+    <ID name="Film" mc="Standard.Class" uid="a2ddcdee-1cac-4f6c-8c2d-03a0412608f0"/>
+    <PID name="new model" mc="Standard.Package" uid="a91d2213-6940-4dc1-bc7a-03f8f0efb403"/>
     <ATTRIBUTES>
       <ATT name="IsActive">false</ATT>
       <ATT name="IsMain">false</ATT>
@@ -17,106 +17,7 @@
     <DEPENDENCIES>
       <COMP relation="OwnedOperation">
         <OBJECT>
-          <ID name="ChangerQuantité" mc="Standard.Operation" uid="4b332683-c2cb-417a-896c-de91b8761827"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[ChangerQuantité]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <COMP relation="IO">
-              <OBJECT>
-                <ID name="TypeFilm" mc="Standard.Parameter" uid="815a748f-dbcc-4bfd-af47-a3c8108e824a"/>
-                <ATTRIBUTES>
-                  <ATT name="ParameterPassing">In</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-                  <ATT name="TypeConstraint"></ATT>
-                  <ATT name="DefaultValue"><![CDATA[bluray/dvd]]></ATT>
-                  <ATT name="IsOrdered">false</ATT>
-                  <ATT name="IsUnique">false</ATT>
-                  <ATT name="IsException">false</ATT>
-                  <ATT name="IsStream">false</ATT>
-                  <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[TypeFilm]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Type">
-                    <FOREIGNID name="string" mc="Standard.DataType" uid="00000004-0000-000d-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-              <OBJECT>
-                <ID name="CodeFilm" mc="Standard.Parameter" uid="f961cbfd-f74f-4672-af64-ff5b5c81259c"/>
-                <ATTRIBUTES>
-                  <ATT name="ParameterPassing">In</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-                  <ATT name="TypeConstraint"></ATT>
-                  <ATT name="DefaultValue"></ATT>
-                  <ATT name="IsOrdered">false</ATT>
-                  <ATT name="IsUnique">false</ATT>
-                  <ATT name="IsException">false</ATT>
-                  <ATT name="IsStream">false</ATT>
-                  <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[CodeFilm]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Type">
-                    <FOREIGNID name="string" mc="Standard.DataType" uid="00000004-0000-000d-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-              <OBJECT>
-                <ID name="Valeur" mc="Standard.Parameter" uid="33140aa8-c38b-48f7-a4ec-e1528883fa85"/>
-                <ATTRIBUTES>
-                  <ATT name="ParameterPassing">In</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-                  <ATT name="TypeConstraint"></ATT>
-                  <ATT name="DefaultValue"></ATT>
-                  <ATT name="IsOrdered">false</ATT>
-                  <ATT name="IsUnique">false</ATT>
-                  <ATT name="IsException">false</ATT>
-                  <ATT name="IsStream">false</ATT>
-                  <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[Valeur]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Type">
-                    <FOREIGNID name="string" mc="Standard.DataType" uid="00000004-0000-000d-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
-            <COMP relation="Descriptor">
-              <OBJECT>
-                <ID name="" mc="Infrastructure.Note" uid="4968fa7f-a883-4ebb-8184-3dd1200382e7"/>
-                <ATTRIBUTES>
-                  <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
-                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
-                  <ATT name="Name"></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Model">
-                    <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="AjouterFilm" mc="Standard.Operation" uid="85a0c8eb-1c68-422a-b127-00fcfa22282b"/>
+          <ID name="AjouterFilm" mc="Standard.Operation" uid="06d6332d-d92c-4b54-883c-31510edc81aa"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -130,7 +31,7 @@
           <DEPENDENCIES>
             <COMP relation="IO">
               <OBJECT>
-                <ID name="Tout" mc="Standard.Parameter" uid="bf5f7671-cee7-4cf6-9d17-59acfb9499a0"/>
+                <ID name="Tout" mc="Standard.Parameter" uid="b6402c30-cf7e-4065-98b2-1dcc11c5e6d4"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -155,7 +56,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="SupprimerFilm" mc="Standard.Operation" uid="0d3bd476-d704-4924-aaed-5c69ac6f5fec"/>
+          <ID name="SupprimerFilm" mc="Standard.Operation" uid="00f6eab8-a5eb-4323-9137-07a9bdd6fef4"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -169,7 +70,7 @@
           <DEPENDENCIES>
             <COMP relation="IO">
               <OBJECT>
-                <ID name="CodeFilm" mc="Standard.Parameter" uid="69dd0a7b-c90f-444f-a0c2-27f9ebe857fc"/>
+                <ID name="CodeFilm" mc="Standard.Parameter" uid="7bfb143f-09bb-4258-b02a-a28365154b0f"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -193,7 +94,7 @@
             </COMP>
             <COMP relation="Descriptor">
               <OBJECT>
-                <ID name="" mc="Infrastructure.Note" uid="51f2091b-e001-4263-b343-bd14a53a7074"/>
+                <ID name="" mc="Infrastructure.Note" uid="22bcbd7c-8d94-4ff1-a7db-6e6fcff287ef"/>
                 <ATTRIBUTES>
                   <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
                   <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -210,7 +111,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="ModifierFilm" mc="Standard.Operation" uid="c55e8409-98e3-4ea7-b05e-bcee230ae829"/>
+          <ID name="ModifierFilm" mc="Standard.Operation" uid="10837ea5-5231-46cb-8e49-94f266629bf4"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -224,7 +125,7 @@
           <DEPENDENCIES>
             <COMP relation="IO">
               <OBJECT>
-                <ID name="CodeFilm" mc="Standard.Parameter" uid="20816042-a5c3-4f77-aeab-4a1ec1276f65"/>
+                <ID name="CodeFilm" mc="Standard.Parameter" uid="4cd4fd2b-f451-4c3d-b243-83445e3359cf"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -246,7 +147,7 @@
                 </DEPENDENCIES>
               </OBJECT>
               <OBJECT>
-                <ID name="VariableAChanger" mc="Standard.Parameter" uid="450731ee-76ca-43c6-a1f4-9433489e310b"/>
+                <ID name="VariableAChanger" mc="Standard.Parameter" uid="602922ec-ec51-422f-acaa-d3c7ac0820d5"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -268,7 +169,7 @@
                 </DEPENDENCIES>
               </OBJECT>
               <OBJECT>
-                <ID name="ValeurAChanger" mc="Standard.Parameter" uid="2461da50-5132-47ba-b521-06d77e126b51"/>
+                <ID name="ValeurAChanger" mc="Standard.Parameter" uid="1b6d00fd-dc77-4d7a-aa68-89e39b4889c9"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -293,7 +194,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Afficher" mc="Standard.Operation" uid="1b9631a6-f391-4a52-b0c5-3b58c4bc1613"/>
+          <ID name="Afficher" mc="Standard.Operation" uid="036540c8-1073-42a1-8a6a-24a0e5c141ed"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
             <ATT name="Final">false</ATT>
@@ -307,7 +208,7 @@
           <DEPENDENCIES>
             <COMP relation="Return">
               <OBJECT>
-                <ID name="p1" mc="Standard.Parameter" uid="75c246c7-ca53-4c9d-9948-a2bb7d9df8b5"/>
+                <ID name="p1" mc="Standard.Parameter" uid="6a9fdca2-8714-45b7-ad6e-582c23473bb0"/>
                 <ATTRIBUTES>
                   <ATT name="ParameterPassing">In</ATT>
                   <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
@@ -334,7 +235,7 @@
       </COMP>
       <COMP relation="OwnedAttribute">
         <OBJECT>
-          <ID name="CodeFilm" mc="Standard.Attribute" uid="2e2fea5c-12d8-4ca8-be07-9363f41a7d47"/>
+          <ID name="CodeFilm" mc="Standard.Attribute" uid="670d1dbb-b99b-4e89-817d-863e6745a5ab"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -358,7 +259,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Nom" mc="Standard.Attribute" uid="f5dbde93-1ca6-4827-b207-84581562fbe5"/>
+          <ID name="Nom" mc="Standard.Attribute" uid="c7f60759-1b63-41fa-9623-8e651bc69018"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -382,7 +283,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Genre" mc="Standard.Attribute" uid="53bd2565-0d02-429c-b193-f8cb03c85a72"/>
+          <ID name="Genre" mc="Standard.Attribute" uid="497c0650-ebbc-433d-bc05-40bd767e984e"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -406,7 +307,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="DateSortie" mc="Standard.Attribute" uid="11f9b127-e66d-45da-b792-0af01f882c64"/>
+          <ID name="DateSortie" mc="Standard.Attribute" uid="bcf306e5-ad8a-42e0-a686-f63d6c04a035"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -429,7 +330,7 @@
             </LINK>
             <COMP relation="Descriptor">
               <OBJECT>
-                <ID name="" mc="Infrastructure.Note" uid="3127c991-0675-47dc-b3f1-31d566d4e188"/>
+                <ID name="" mc="Infrastructure.Note" uid="7bcf6ab8-c85d-410d-bf51-0ff6270682b4"/>
                 <ATTRIBUTES>
                   <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
                   <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -446,7 +347,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="EstNouveau" mc="Standard.Attribute" uid="f80849a6-6382-4c9b-9d10-beeb87a77113"/>
+          <ID name="EstNouveau" mc="Standard.Attribute" uid="8ed4496c-7ed4-4d54-ac89-0b5aea6cf923"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -470,7 +371,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Durée" mc="Standard.Attribute" uid="d8bd5c4e-44d3-4c46-ac5a-29d3730c8fd1"/>
+          <ID name="Durée" mc="Standard.Attribute" uid="2abd3f91-442a-44a4-a489-eae622365ab6"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -494,7 +395,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Pays" mc="Standard.Attribute" uid="a4abe236-9fc8-4ff2-b3a3-6c1966d6fd38"/>
+          <ID name="Pays" mc="Standard.Attribute" uid="069862b5-5b98-422f-8cd9-8592e793e8aa"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -518,7 +419,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Affiche" mc="Standard.Attribute" uid="6f98ae50-6511-4d82-b55f-0fb1942d1728"/>
+          <ID name="Affiche" mc="Standard.Attribute" uid="f3a4d2d0-140f-4f0b-a26c-dea2c4723af3"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -542,7 +443,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Directeur" mc="Standard.Attribute" uid="d8f048dd-ce60-49f1-b026-be542fe8a211"/>
+          <ID name="Directeur" mc="Standard.Attribute" uid="539fad59-2169-4d0c-8842-c45099fce1eb"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -565,7 +466,7 @@
             </LINK>
             <COMP relation="Descriptor">
               <OBJECT>
-                <ID name="" mc="Infrastructure.Note" uid="9a1d02eb-d766-43c3-acdb-fc9bef6dd5c7"/>
+                <ID name="" mc="Infrastructure.Note" uid="c86dab1d-70f0-4648-91df-0ae315933bb0"/>
                 <ATTRIBUTES>
                   <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
                   <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -582,7 +483,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Scénariste" mc="Standard.Attribute" uid="dfb08382-f811-496c-a829-2dd6c999cb69"/>
+          <ID name="Scénariste" mc="Standard.Attribute" uid="bf6e6b37-c077-4971-a52b-4cc5371966d3"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -605,7 +506,7 @@
             </LINK>
             <COMP relation="Descriptor">
               <OBJECT>
-                <ID name="" mc="Infrastructure.Note" uid="533847df-6cd3-48c1-bc8a-7717b0432b7a"/>
+                <ID name="" mc="Infrastructure.Note" uid="6e034e16-85c4-45a4-957f-bac0a0ffebbf"/>
                 <ATTRIBUTES>
                   <ATT name="Content"><![CDATA[<Enter note text here>]]></ATT>
                   <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
@@ -622,7 +523,7 @@
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="Scénario" mc="Standard.Attribute" uid="e74c7324-6648-4e03-8723-232f2fb00e56"/>
+          <ID name="Scénario" mc="Standard.Attribute" uid="14643058-15d1-42e9-b903-6ffaf41a5df8"/>
           <ATTRIBUTES>
             <ATT name="TypeConstraint"></ATT>
             <ATT name="Value"></ATT>
@@ -645,131 +546,43 @@
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
-        <OBJECT>
-          <ID name="QuantitéDVD" mc="Standard.Attribute" uid="5efe9bff-834c-49f5-89b0-022d8ddaba35"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[QuantitéDVD]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="QuantitéBlueray" mc="Standard.Attribute" uid="920aa923-2b68-474f-8bb6-3bab4d4f1704"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[QuantitéBlueray]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="PrixVente" mc="Standard.Attribute" uid="49810d80-1492-4d17-ada0-6e0ac303991b"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[PrixVente]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="double" mc="Standard.DataType" uid="00000004-0000-0010-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="PrixSemaine" mc="Standard.Attribute" uid="3e7d5b49-29e2-4a9e-ba22-e0faf5767a78"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[PrixSemaine]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="double" mc="Standard.DataType" uid="00000004-0000-0010-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="PrixJournée" mc="Standard.Attribute" uid="ca3b16ab-b41e-40dd-a2a6-d282210e7e32"/>
-          <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
-            <ATT name="Changeable">ReadWrite</ATT>
-            <ATT name="IsDerived">false</ATT>
-            <ATT name="IsOrdered">false</ATT>
-            <ATT name="IsUnique">false</ATT>
-            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[PrixJournée]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="double" mc="Standard.DataType" uid="00000004-0000-0010-0000-000000000000"/>
-            </LINK>
-          </DEPENDENCIES>
-        </OBJECT>
       </COMP>
       <COMP relation="OwnedEnd">
-        <REFOBJ>
-          <ID name="" mc="Standard.AssociationEnd" uid="47a5f88d-f49f-4eaa-badf-595d5df0072a"/>
-        </REFOBJ>
+        <OBJECT>
+          <ID name="" mc="Standard.AssociationEnd" uid="ec04c1a7-5471-4709-bb6f-c40f68fa5d8b"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[*]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Opposite">
+              <REFOBJ>
+                <ID name="" mc="Standard.AssociationEnd" uid="e75d8d58-5c79-41b1-ab2e-fd30ac3dfe5c"/>
+              </REFOBJ>
+            </COMP>
+            <COMP relation="Association">
+              <OBJECT>
+                <ID name="" mc="Standard.Association" uid="e1c8cf3c-6015-42ee-8ff1-b20f51236323"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

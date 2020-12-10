@@ -1,5 +1,3 @@
-#Fri Nov 27 11:26:38 EST 2020
-org.modelio.diagram.editor.OpenedDiagrams3='InteractionDevenirClient' {3dbffb8b-8be4-4395-ab1d-ed538a760747} Standard.SequenceDiagram
-org.modelio.diagram.editor.OpenedDiagrams2='InteractionLouerFilm' {0096e08d-2c86-4d13-8774-f279119cd544} Standard.SequenceDiagram
-org.modelio.diagram.editor.OpenedDiagrams1='Model Use Case diagram' {f94e5f40-f5de-44a1-abb8-68238d75e22c} Standard.UseCaseDiagram
+#Mon Dec 07 20:27:02 EST 2020
+org.modelio.diagram.editor.OpenedDiagrams1='new Class diagram' {5f3e43f5-c25f-4c39-b6eb-aa600ee01669} Standard.ClassDiagram
 org.modelio.diagram.editor.OpenedDiagrams0='base uml videoclub Class diagram' {23d8883c-d74f-41df-b3ef-7ac6296d706b} Standard.ClassDiagram

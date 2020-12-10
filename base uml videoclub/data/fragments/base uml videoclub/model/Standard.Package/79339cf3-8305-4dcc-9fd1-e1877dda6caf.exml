@@ -17,7 +17,6 @@
         <COMPID name="Membre" mc="Standard.Class" uid="e8730940-8c34-4c83-9266-10fc8d84c767"/>
         <COMPID name="Film" mc="Standard.Class" uid="211228e0-6105-4bfa-afce-ba06c87f6496"/>
         <COMPID name="DisqueLouer" mc="Standard.Class" uid="3baf19a4-903d-4b3b-bcde-3afa784c7fd5"/>
-        <COMPID name="Disque" mc="Standard.Class" uid="e1f5f83c-d124-41e4-96db-3fedef34f877"/>
         <COMPID name="InventaireDeVente" mc="Standard.Class" uid="f92ea3a6-7ad4-402d-b174-020a3339ef13"/>
         <COMPID name="Article" mc="Standard.Class" uid="c4e1e19f-571e-49dc-a6c5-98aed5b00d69"/>
         <COMPID name="Réservation" mc="Standard.Class" uid="f83cd258-66d8-4b69-b80a-cfc39b8cab5c"/>
