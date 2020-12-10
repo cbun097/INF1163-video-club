@@ -16,7 +16,7 @@ public class LocationController {
 	// Louer un film
 	public void louerFilm(Location location) {
 		// TODO Ajouter le reste
-		String query = "INSERT INTO Location(NumeroTelephone, CodeDisque, DateLouer, DateRetour, DateDu, MontantRetardDu)  VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Location(NumeroTelephoneClient, CodeDisque, DateLouer, DateRetour, DateDu, MontantRetardDu)  VALUES (?, ?, ?, ?, ?, ?)";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
@@ -39,7 +39,7 @@ public class LocationController {
 	// R�server un film
 	public void reserveFilm(Location location) {
 		// TODO Ajouter le reste
-		String query = "UPDATE Location SET NumeroTelephone=?, CodeDisque=?, DateLouer=?, DateRetour=?, DateDu=?, MontantRetardDu=? WHERE SOMETHING_TO=?";
+		String query = "UPDATE Location SET NumeroTelephoneClient=?, CodeDisque=?, DateLouer=?, DateRetour=?, DateDu=?, MontantRetardDu=? WHERE SOMETHING_TO=?";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
@@ -90,7 +90,7 @@ public class LocationController {
 			
 		    listeLocations.clear();
 			while (result.next()){
-		    	String numTel = result.getString("NumeroTelephone");
+		    	String numTel = result.getString("NumeroTelephoneClient");
 		    	String codeDisque = result.getString("CodeDisque");
 		    	String dateLouer = result.getString("DateLouer");
 		    	String dateRetour = result.getString("DateRetour");
