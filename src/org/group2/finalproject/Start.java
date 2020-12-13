@@ -15,10 +15,12 @@ public class Start
 		ClientManagement client = new ClientManagement();
 		FilmManagement film = new FilmManagement();
 		LocationManagement location = new LocationManagement();
+		ArticleVenteManagement article = new ArticleVenteManagement();
 		
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Clients", client);
 		tabbedPane.addTab("Films", film);
+		tabbedPane.addTab("Article", article);
 		tabbedPane.addTab("Locations", location);
         f.setContentPane(tabbedPane);
 		f.setVisible(true);

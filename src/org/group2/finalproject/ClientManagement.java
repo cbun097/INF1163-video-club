@@ -22,7 +22,6 @@ public class ClientManagement extends JPanel
 	private JTextField modalCarteCredit;
 	private JCheckBox modalEstMembre;
 	private JTextField modalCodeSecret;
-	private JTextField modalMontantDu;
 
 	/**
 	 * Create the panel.
@@ -62,7 +61,6 @@ public class ClientManagement extends JPanel
 		modalCarteCredit = new JTextField(5);
 		modalEstMembre = new JCheckBox();
 		modalCodeSecret = new JTextField(5);
-		modalMontantDu = new JTextField(5);
 		
 		modalTelFieldSelect = new JComboBox<>();
 		modalTelFieldSelect.addActionListener(e -> {
@@ -78,7 +76,6 @@ public class ClientManagement extends JPanel
 					modalCarteCredit.setText(membre.getCarteDeCredit());
 					modalEstMembre.setSelected(membre.getEstMembre());
 					modalCodeSecret.setText(Integer.toString(membre.getCodeSecret()));
-					modalMontantDu.setText(Double.toString(membre.getMontantDu()));
 			}
 		});
 	}
@@ -93,9 +90,8 @@ public class ClientManagement extends JPanel
 	    {
 	    	Boolean estMembreChecked = modalEstMembre.isSelected();
 	    	int codeSecretValeur = Integer.parseInt(modalCodeSecret.getText());
-	    	double montandDuValeur = Double.parseDouble(modalMontantDu.getText());
 	    	Membre membre = new Membre(modalNumTel.getText(),modalNomField.getText(), modalEmailField.getText(), modalAdresseField.getText(),
-			estMembreChecked, modalCarteCredit.getText() , codeSecretValeur, montandDuValeur);
+			estMembreChecked, modalCarteCredit.getText() , codeSecretValeur);
 	    	controller.ajouterMembre(membre);
 	    	updateTableData();
 	    }     
@@ -118,7 +114,6 @@ public class ClientManagement extends JPanel
 		    selectMembre.setCarteDeCredit(modalCarteCredit.getText());
 		    selectMembre.setEstMembre(modalEstMembre.isSelected());
 		    selectMembre.setCodeSecret(Integer.parseInt(modalCodeSecret.getText()));
-		    selectMembre.setMontantDu(Double.parseDouble(modalMontantDu.getText()));
 	    	controller.modifierMembre(selectMembre);
 	    	updateTableData();
 	    }     
@@ -155,7 +150,7 @@ public class ClientManagement extends JPanel
 	private void updateTableData()
 	{
 		tblClient.setModel(new DefaultTableModel(controller.getListeMembresData(), new String[]{"Telephone", "Nom","Courriel", 
-				"Adresse Domicile", "Carte de credit","Est Membre", "Code Secret", "Montant du"}));
+				"Adresse Domicile", "Carte de credit","Est Membre", "Code Secret"}));
 	}
 	
 	public JPanel ClientJPanel(boolean telTextField) 
@@ -170,7 +165,6 @@ public class ClientManagement extends JPanel
 		modalCarteCredit.setText("");
 		modalEstMembre = new JCheckBox();
 		modalCodeSecret.setText("");
-		modalMontantDu.setText("");
 		
 	    myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 	    
@@ -205,7 +199,6 @@ public class ClientManagement extends JPanel
 	    myPanel.add(new JLabel("Adresse domicile:"));
 	    myPanel.add(modalAdresseField);
 	    
-	    // Display??
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Carte de credit:"));
 	    myPanel.add(modalCarteCredit);
@@ -214,14 +207,9 @@ public class ClientManagement extends JPanel
 	    myPanel.add(new JLabel("Membre:"));
 	    myPanel.add(modalEstMembre);
 	    
-	    // Display??
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Code secret:"));
 	    myPanel.add(modalCodeSecret);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Montant Du:"));
-	    myPanel.add(modalMontantDu);
 	    
 	    return myPanel;
 	}

@@ -2,43 +2,61 @@ package org.group2.finalproject.classes;
 
 public class Disque {
 	
-	String codeFilm;
-	String codeDisque;
-	String typeDeDisque;
+	Film CodeFilm;
+	String TypeDeDisque;
+	double PrixLocationSemaine;
+	double PrixLocationJournee;
+	Boolean AVendre;
 	
-	public Disque(String codeFilm, String codeDisque, String typeDeDisque) {
+	public Disque(Film CodeFilm, String typeDeDisque, double prixLocationSemaine, double prixLocationJournee,
+			Boolean aVendre) {
 		super();
-		this.codeFilm = codeFilm;
-		this.codeDisque = codeDisque;
-		this.typeDeDisque = typeDeDisque;
+		this.CodeFilm = CodeFilm;
+		TypeDeDisque = typeDeDisque;
+		PrixLocationSemaine = prixLocationSemaine;
+		PrixLocationJournee = prixLocationJournee;
+		AVendre = aVendre;
 	}
-	
-	public String getCodeFilm() {
-		return codeFilm;
+
+	public Film getCodeFilm() {
+		return CodeFilm;
 	}
-	
-	public void setCodeFilm(String codeFilm) {
-		this.codeFilm = codeFilm;
+
+	public void setCodeFilm(Film CodeFilm) {
+		this.CodeFilm = CodeFilm;
 	}
-	
-	public String getCodeDisque() {
-		return codeDisque;
-	}
-	
-	public void setCodeDisque(String codeDisque) {
-		this.codeDisque = codeDisque;
-	}
-	
+
 	public String getTypeDeDisque() {
-		return typeDeDisque;
+		return TypeDeDisque;
 	}
-	
+
 	public void setTypeDeDisque(String typeDeDisque) {
-		this.typeDeDisque = typeDeDisque;
+		TypeDeDisque = typeDeDisque;
+	}
+
+	public double getPrixLocationSemaine() {
+		return PrixLocationSemaine;
+	}
+
+	public void setPrixLocationSemaine(double prixLocationSemaine) {
+		PrixLocationSemaine = prixLocationSemaine;
+	}
+
+	public double getPrixLocationJournee() {
+		return PrixLocationJournee;
+	}
+
+	public void setPrixLocationJournee(double prixLocationJournee) {
+		PrixLocationJournee = prixLocationJournee;
+	}
+
+	public Boolean getAVendre() {
+		return AVendre;
+	}
+
+	public void setAVendre(Boolean aVendre) {
+		AVendre = aVendre;
 	}
 	
-	@Override
-	public String toString() {
-		return "Disque [codeFilm=" + codeFilm + ", codeDisque=" + codeDisque + ", typeDeDisque=" + typeDeDisque + "]";
-	}
+	
 }
