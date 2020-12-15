@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Gestion de livre perdu" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Gestion de film perdu" version="4">
   <OBJECT>
-    <ID name="Gestion de livre perdu" mc="Standard.UseCase" uid="05caaf50-3476-4dda-ac04-af9ce012a5a1"/>
+    <ID name="Gestion de film perdu" mc="Standard.UseCase" uid="05caaf50-3476-4dda-ac04-af9ce012a5a1"/>
     <PID name="Model" mc="Standard.Package" uid="c7d35183-8b0c-4bec-9262-ec518569a79a"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
@@ -9,7 +9,7 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[Gestion de livre perdu]]></ATT>
+      <ATT name="Name"><![CDATA[Gestion de film perdu]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
