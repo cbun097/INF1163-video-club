@@ -1,6 +1,7 @@
 package org.group2.finalproject.classes;
 
 public class ArticleVente {
+<<<<<<< HEAD
 //<<<<<<< HEAD
 //	String CodeProduit;
 //	double Prix;
@@ -46,6 +47,8 @@ public class ArticleVente {
 //	public void setDescriptionProduit(String descriptionProduit) {
 //		DescriptionProduit = descriptionProduit;
 //=======
+=======
+>>>>>>> b0434c3ea4589495cad4040f21d15450b674bd90
 	
 	String nomProduit;
 	String codeProduit;
@@ -102,7 +105,11 @@ public class ArticleVente {
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return "ArticleVente [nomProduit=" + nomProduit + ", codeProduit=" + codeProduit + ", quantite=" + quantite + ", prix=" + prix + ", descriptionProduit=" + descriptionProduit + "]";
 //>>>>>>> connection front to back pour inventory ui
+=======
+		return "InventaireDeVente [nomProduit=" + nomProduit + ", codeProduit=" + codeProduit + ", quantite=" + quantite + ", prix=" + prix + ", descriptionProduit=" + descriptionProduit + "]";
+>>>>>>> b0434c3ea4589495cad4040f21d15450b674bd90
 	}
 }
