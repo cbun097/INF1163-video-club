@@ -18,7 +18,7 @@
         <COMPID name="Gestion de nouveau film" mc="Standard.UseCase" uid="ed651976-bd40-44d7-b68b-c43e88c09011"/>
         <COMPID name="Employer" mc="Standard.Actor" uid="a90f8814-3707-4538-bebb-6ce975fd4c02"/>
         <COMPID name="libérer les film" mc="Standard.UseCase" uid="e25ad722-f4e8-4fce-b944-a3b750392e07"/>
-        <COMPID name="organizer les film" mc="Standard.UseCase" uid="28720045-aa9f-42a4-b98c-0f0b6c0b5f02"/>
+        <COMPID name="organizer les film sur l'étagère" mc="Standard.UseCase" uid="28720045-aa9f-42a4-b98c-0f0b6c0b5f02"/>
         <COMPID name="membre" mc="Standard.Actor" uid="0cb8241f-4c0b-4b88-a760-76662abbd93b"/>
         <COMPID name="client" mc="Standard.Actor" uid="baa81fce-474d-4e82-a74e-7e526a8a52bd"/>
         <COMPID name="louer des film" mc="Standard.UseCase" uid="6b6429d5-fc39-4a4f-8125-eb6ad304d881"/>
@@ -33,9 +33,8 @@
         <COMPID name="system" mc="Standard.Actor" uid="2d6575b3-d090-4f8f-8c20-6d2d28986e1d"/>
         <COMPID name="calcul de somme du" mc="Standard.UseCase" uid="30ca00b7-b05b-48d0-94d8-7dc14fafd66a"/>
         <COMPID name="créer liste d'appele" mc="Standard.UseCase" uid="f210d74f-7ba2-46db-a501-8f1852e50dce"/>
-        <COMPID name="Gestion de livre perdu" mc="Standard.UseCase" uid="05caaf50-3476-4dda-ac04-af9ce012a5a1"/>
+        <COMPID name="Gestion de film perdu" mc="Standard.UseCase" uid="05caaf50-3476-4dda-ac04-af9ce012a5a1"/>
         <COMPID name="gestion d'inventaire" mc="Standard.UseCase" uid="97a119d6-30ea-4b3f-b194-5c7481ac73c7"/>
-        <COMPID name="Gestion des réservations" mc="Standard.UseCase" uid="122aac93-99f1-486f-882b-c34674ec9684"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="Model Use Case diagram" mc="Standard.UseCaseDiagram" uid="f94e5f40-f5de-44a1-abb8-68238d75e22c"/>

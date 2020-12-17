@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="organizer les film" version="4">
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="organizer les film sur l'étagère" version="4">
   <OBJECT>
-    <ID name="organizer les film" mc="Standard.UseCase" uid="28720045-aa9f-42a4-b98c-0f0b6c0b5f02"/>
+    <ID name="organizer les film sur l'étagère" mc="Standard.UseCase" uid="28720045-aa9f-42a4-b98c-0f0b6c0b5f02"/>
     <PID name="Model" mc="Standard.Package" uid="c7d35183-8b0c-4bec-9262-ec518569a79a"/>
     <ATTRIBUTES>
       <ATT name="IsElementary">false</ATT>
@@ -9,7 +9,7 @@
       <ATT name="IsLeaf">false</ATT>
       <ATT name="IsRoot">false</ATT>
       <ATT name="Visibility">Public</ATT>
-      <ATT name="Name"><![CDATA[organizer les film]]></ATT>
+      <ATT name="Name"><![CDATA[organizer les film sur l'étagère]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
