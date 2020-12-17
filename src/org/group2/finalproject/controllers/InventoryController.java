@@ -15,7 +15,7 @@ public class InventoryController {
 	// add new item to inventory
 	public void ajouterArticle(ArticleVente article) {
 		//TODO add rest
-		String query = "INSERT INTO InventaireDeVente (NomProduit, CodeProduit, Quantite, Prix, DescriptionProduit) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO ArticleVente (NomProduit, CodeProduit, QuantiteDisponible, Prix, DescriptionProduit) VALUES (?, ?, ?, ?, ?)";
 
 		try
 		{ 
@@ -42,7 +42,7 @@ public class InventoryController {
 	// modify an existing item in the inventory
 	public void modifierArticle(ArticleVente article) {
 		//TODO add rest
-		String query = "UPDATE InventaireDeVente SET NomProduit=?, Quantite=?, Prix=?, DescriptionProduit=? WHERE CodeProduit=?";
+		String query = "UPDATE ArticleVente SET NomProduit=?, QuantiteDisponible=?, Prix=?, DescriptionProduit=? WHERE CodeProduit=?";
 		
 		try
 		{ 
@@ -69,7 +69,7 @@ public class InventoryController {
 	// remove an item from the inventory
 	public void supprimerArticle(ArticleVente article) {
 		//TODO add rest
-		String query = "DELETE FROM InventaireDeVente WHERE CodeProduit=?";
+		String query = "DELETE FROM ArticleVente WHERE CodeProduit=?";
 		try 
 		{
 			ConnexionDB.initConnexion();
@@ -90,7 +90,7 @@ public class InventoryController {
 	}
 	// adjust inventory quantity for a specific item
 	public void modifierQuantite(ArticleVente article) {
-		String query = "UPDATE InventaireDeVente (WHERE CodeProduit=?, Quantite=?) ";
+		String query = "UPDATE ArticleVente (WHERE CodeProduit=?, QuantiteDisponible=?) ";
 
 		try
 		{ 
@@ -112,7 +112,7 @@ public class InventoryController {
 		}
 	}
 	public void updateListeArticle() {
-		String query = "SELECT * FROM InventaireDeVente";
+		String query = "SELECT * FROM ArticleVente";
 		try
 		{ 
 			ConnexionDB.initConnexion();
@@ -124,7 +124,7 @@ public class InventoryController {
 			{
 			    String nomProduit = result.getString("NomProduit");
 			    String codeProduit = result.getString("CodeProduit");
-			    int quantite = result.getInt("Quantite");
+			    int quantite = result.getInt("QuantiteDisponible");
 			    double prix = result.getDouble("Prix");
 			    String descriptionProduit = result.getString("DescriptionProduit");
 			    

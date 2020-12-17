@@ -15,11 +15,11 @@ public class Start
 		ClientManagement client = new ClientManagement();
 		FilmManagement film = new FilmManagement();
 		LocationManagement location = new LocationManagement();
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		ArticleVenteManagement article = new ArticleVenteManagement();
-=======
+//=======
 		InventoryManagement inventaire = new InventoryManagement();
->>>>>>> inventory ui and search bars
+//>>>>>>> inventory ui and search bars
 		
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Clients", client);
