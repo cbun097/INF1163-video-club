@@ -1,17 +1,14 @@
 package org.group2.finalproject;
 
-//<<<<<<< HEAD
+
 import java.awt.Dimension;
-//=======
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-<<<<<<< HEAD
-//>>>>>>> inventory ui and search bars
-=======
->>>>>>> b0434c3ea4589495cad4040f21d15450b674bd90
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -71,8 +68,7 @@ public class FilmManagement extends JPanel {
 		JButton btnShowAll = new JButton("Afficher tout");
 		btnShowAll.setBounds(10, 142, 122, 23);
 		add(btnShowAll);
-<<<<<<< HEAD
-//<<<<<<< HEAD
+
 		btnShowAll.addActionListener(e -> updateTableFilms());
 		
 		modalCodeFilmField = new JTextField(5);
@@ -260,27 +256,7 @@ public class FilmManagement extends JPanel {
  		add(btnSearch);
 	    
 	    return myPanel;
-//=======
-		
-		
-		
-		
-		
-//>>>>>>> inventory ui and search bars
-=======
-		
-		
-		// search to find film in db
-		JTextField search = new JTextField("recherche film");
-		search.setBounds(142, 11, 450, 25);
-		add(search);
-		
-		JButton btnSearch = new JButton("recherche");
-		btnSearch.setBounds(600, 12, 122, 25);
-		add(btnSearch);
-		
-		
->>>>>>> b0434c3ea4589495cad4040f21d15450b674bd90
+
 	}
 
 }

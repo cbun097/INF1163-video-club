@@ -22,7 +22,7 @@ public class ClientManagement extends JPanel
 	private JTextField modalCarteCredit;
 	private JCheckBox modalEstMembre;
 	private JTextField modalCodeSecret;
-
+	private JTextField search;
 	/**
 	 * Create the panel.
 	 */
@@ -31,9 +31,9 @@ public class ClientManagement extends JPanel
 		setLayout(null);
 		controller = new MembreController();
 
-		controller.updateMembreListe();
+		controller.updateMembreListe("");
 		tblClient = new JTable();
-		updateTableData();
+		updateTableModel();
 		
 		JScrollPane scrollPane = new JScrollPane(tblClient);
 		scrollPane.setBounds(142, 50, 600, 400);
@@ -80,13 +80,19 @@ public class ClientManagement extends JPanel
 		});
 		
 		// search to find film in db
-				JTextField search = new JTextField("recherche client");
+				search = new JTextField("");
 				search.setBounds(142, 11, 450, 25);
 				add(search);
 				
 				JButton btnSearch = new JButton("recherche");
 				btnSearch.setBounds(600, 12, 122, 25);
 				add(btnSearch);
+				btnSearch.addActionListener(e -> rechercheDialogMembre());
+				
+	}
+	
+	private void rechercheDialogMembre() {
+		updateTableData();
 	}
 	
 	// Methode pour Ajouter un membre
@@ -156,10 +162,18 @@ public class ClientManagement extends JPanel
 		}
 	}
 	
-	private void updateTableData()
+	private void updateTableModel()
 	{
 		tblClient.setModel(new DefaultTableModel(controller.getListeMembresData(), new String[]{"Telephone", "Nom","Courriel", 
 				"Adresse Domicile", "Carte de credit","Est Membre", "Code Secret"}));
+	}
+	
+	private void updateTableData()
+	{
+		String item = search.getText();
+		controller.updateMembreListe(item);
+		
+		updateTableModel();
 	}
 	
 	public JPanel ClientJPanel(boolean telTextField) 

@@ -26,15 +26,16 @@ public class InventoryManagement extends JPanel{
 	private JTextField modalQtyField;
 	private JTextField modalPrixField;
 	private JTextField modalDescriptionField;
+	private JTextField search;
 	
 	public InventoryManagement() {
 		
 		setLayout(null);
 		controller = new InventoryController();
 		
-		controller.updateListeArticle();
+		controller.updateListeArticle("");
 		Inventory = new JTable();
-		updateTableData();
+		updateTableModel();
 		//tblClient.setBounds(142, 11, 298, 278);
 		
 		JScrollPane scrollPane = new JScrollPane(Inventory);
@@ -62,13 +63,14 @@ public class InventoryManagement extends JPanel{
 		add(btnQty);
 		btnQty.addActionListener(e -> ajusterQty());
 		
-		JTextField search = new JTextField("recherche item");
+		search = new JTextField();
 		search.setBounds(142, 11, 450, 25);
 		add(search);
 		
 		JButton btnSearch = new JButton("recherche");
 		btnSearch.setBounds(600, 12, 122, 25);
 		add(btnSearch);
+		btnSearch.addActionListener(e -> rechercheDialogItem());
 		
 		modalNomField = new JTextField(5);
 		modalCodeField = new JTextField(5);
@@ -92,6 +94,9 @@ public class InventoryManagement extends JPanel{
 		
 		
 		
+	}
+	private void rechercheDialogItem() {
+		updateTableData();
 	}
 	private void ajouterDialogItem() {
 		
@@ -119,7 +124,7 @@ public class InventoryManagement extends JPanel{
 			int quantiteResult = Integer.parseInt(modalQtyField.getText());
 			double prixResult = Double.parseDouble(modalPrixField.getText());
 			ArticleVente article = new ArticleVente(modalNomField.getText(), modalCodeField.getText(), quantiteResult, prixResult, modalDescriptionField.getText());
-			controller.ajouterArticle(article);
+			controller.modifierArticle(article);
 	    	updateTableData();
 		}
 	}
@@ -171,10 +176,17 @@ public class InventoryManagement extends JPanel{
 			updateTableData();
 		}
 	}
+	private void updateTableModel() {
+  		Inventory.setModel(new DefaultTableModel(controller.getListeArticleData(), new String[]{"Nom du Produit", "Code du Produit","Qty", 
+				"Prix", "Description du Protion"}));
+	}
+	
 	private void updateTableData()
 	{
-		Inventory.setModel(new DefaultTableModel(controller.getListeArticleData(), new String[]{"Nom du Produit", "Code du Produit","Qty", 
-				"Prix", "Description du Protion"}));
+		String item = search.getText();
+		controller.updateListeArticle(item);
+		
+		updateTableModel();
 	}
 	public JPanel ItemPanel(boolean codeProduit) {
 		JPanel myPanel = new JPanel();
@@ -211,10 +223,6 @@ public class InventoryManagement extends JPanel{
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Nom du Produit:"));
 	    myPanel.add(modalNomField);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Code du Produit:"));
-	    myPanel.add(modalCodeField);
 
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Quantite:"));
