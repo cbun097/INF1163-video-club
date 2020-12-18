@@ -118,7 +118,7 @@ public class MembreController
 			    Boolean estMembre = result.getBoolean("EstMembre");
 			    int codeSecret = result.getInt("CodeSecret");
 			    
-			    listeMembres.add(new Membre(numTel, nom, email, adresseDomicile, estMembre, 
+			    listeMembres.add(new Membre(nom, email, adresseDomicile, numTel, estMembre, 
 			    		carteCredit, codeSecret));
 			}
 			

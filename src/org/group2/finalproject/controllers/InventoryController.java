@@ -29,7 +29,7 @@ public class InventoryController {
 			statement.setDouble(4, article.getPrix());
 			statement.setString(5, article.getDescriptionProduit());
 			statement.executeUpdate();
-			System.out.println("Article ajout� avec succ�s!");
+			System.out.println("Article ajoute avec succes!");
 //			updateListeArticle();
 		}
 		catch(SQLException e) 
@@ -46,7 +46,6 @@ public class InventoryController {
 		//TODO add rest
 
 		String query = "UPDATE ArticleVente SET NomProduit=?, QuantiteDisponible=?, Prix=?, DescriptionProduit=? WHERE CodeProduit=?";
-
 		
 		try
 		{ 
@@ -58,7 +57,7 @@ public class InventoryController {
 			statement.setDouble(4, article.getPrix());
 			statement.setString(5, article.getDescriptionProduit());
 			statement.executeUpdate();
-			System.out.println("Article ajout� avec succ�s!");
+			System.out.println("Article ajoute avec succes!");
 //			updateListeArticle();
 		}
 		catch(SQLException e) 
@@ -150,7 +149,7 @@ public class InventoryController {
 			    listeArticle.add(new ArticleVente(nomProduit, codeProduit, quantite, prix, descriptionProduit));
 			}
 			
-			System.out.println("Liste des articles mise � jour");
+			System.out.println("Liste des articles mise a jour");
 		}
 		catch(SQLException e)
 		{

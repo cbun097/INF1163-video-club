@@ -16,14 +16,11 @@ public class Start
 		FilmManagement film = new FilmManagement();
 		LocationManagement location = new LocationManagement();
 
-		ArticleVenteManagement article = new ArticleVenteManagement();
-
 		InventoryManagement inventaire = new InventoryManagement();
 
 		JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.addTab("Clients", client);
 		tabbedPane.addTab("Films", film);
-		tabbedPane.addTab("Article", article);
 		tabbedPane.addTab("Locations", location);
 		tabbedPane.addTab("Inventaire", inventaire);
         f.setContentPane(tabbedPane);
