@@ -1,8 +1,11 @@
 package org.group2.finalproject;
 
+import java.awt.event.ItemEvent;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -13,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import org.group2.finalproject.classes.ArticleVente;
+import org.group2.finalproject.classes.Disque;
+import org.group2.finalproject.classes.Film;
 import org.group2.finalproject.controllers.InventoryController;
 
 public class InventoryManagement extends JPanel{
@@ -27,6 +32,15 @@ public class InventoryManagement extends JPanel{
 	private JTextField modalPrixField;
 	private JTextField modalDescriptionField;
 	private JTextField search;
+	
+	// DISQUES //
+
+	private JComboBox<String> modalTypeDisque;
+	private JComboBox<String> modalCodeFilm;
+	private JTextField modalPrixLocationS;
+	private JTextField modalPrixLocationJ;
+	private JCheckBox modalAVendre;
+	private JCheckBox estDisque;
 	
 	public InventoryManagement() {
 		
@@ -78,10 +92,18 @@ public class InventoryManagement extends JPanel{
 		modalPrixField = new JTextField(5);
 		modalDescriptionField = new JTextField(5);
 		
+	    estDisque = new JCheckBox();
+		
+		modalTypeDisque = new JComboBox<>(new String[]{"Blu-ray", "DVD"});
+		modalCodeFilm = new JComboBox<>();
+		modalPrixLocationS = new JTextField(5);
+		modalPrixLocationJ = new JTextField(5);
+		modalAVendre = new JCheckBox();
+		
 		codeFieldSelect = new JComboBox<>();
 		codeFieldSelect.addActionListener(e -> {
 			if(codeFieldSelect.getSelectedItem() != null) {
-				ArticleVente article = controller.getListeArticle().stream()
+				ArticleVente article = ListesUtil.LISTE_INVENTAIRE.stream()
 						.filter((me) -> codeFieldSelect.getSelectedItem().equals(me.getCodeProduit()))
 				    	.findAny()
 				    	.orElse(null);
@@ -92,7 +114,15 @@ public class InventoryManagement extends JPanel{
 			}
 		});
 		
-		
+
+	    
+		estDisque.addItemListener(e -> {
+    		modalTypeDisque.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
+    		modalCodeFilm.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
+    		modalPrixLocationS.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
+    		modalPrixLocationJ.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
+    		modalAVendre.setEnabled(e.getStateChange() == ItemEvent.SELECTED);
+	    });
 		
 	}
 	private void rechercheDialogItem() {
@@ -105,11 +135,22 @@ public class InventoryManagement extends JPanel{
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Ajouter un item", JOptionPane.OK_CANCEL_OPTION);
 		if(result == JOptionPane.OK_OPTION) {
 			
-			
 			int quantiteResult = Integer.parseInt(modalQtyField.getText());
 			double prixResult = Double.parseDouble(modalPrixField.getText());
-			ArticleVente article = new ArticleVente(modalNomField.getText(), modalCodeField.getText(), quantiteResult, prixResult, modalDescriptionField.getText());
-			controller.ajouterArticle(article);
+			
+			if(estDisque.isSelected())
+			{
+				double prixLocJResult = Double.parseDouble(modalPrixLocationJ.getText());
+				double prixLocSResult = Double.parseDouble(modalPrixLocationS.getText());
+				Film f = ListesUtil.LISTE_FILMS.stream().filter(e -> e.getCodeFilm() == modalCodeFilm.getSelectedItem()).findAny().orElse(null);
+				Disque disque = new Disque(modalCodeField.getText(), f, (String)modalTypeDisque.getSelectedItem(), prixLocSResult, prixLocJResult, modalAVendre.isSelected(), quantiteResult, prixResult);
+				controller.ajouterArticle(disque);
+			}
+			else
+			{
+				ArticleVente article = new ArticleVente(modalNomField.getText(), modalCodeField.getText(), quantiteResult, prixResult, modalDescriptionField.getText());
+				controller.ajouterArticle(article);
+			}
 	    	updateTableData();
 		}
 	}
@@ -132,7 +173,7 @@ public class InventoryManagement extends JPanel{
 		
 		codeFieldSelect.removeAllItems();// = new JComboBox<>();
 		  
-		for (ArticleVente m : controller.getListeArticle()) 
+		for (ArticleVente m : ListesUtil.LISTE_INVENTAIRE) 
 			codeFieldSelect.addItem(m.getCodeProduit());
 
 		if(codeFieldSelect.getItemCount() > 0)
@@ -146,7 +187,7 @@ public class InventoryManagement extends JPanel{
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Entrer le code item a supprimer", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) 
 		{
-			ArticleVente selectArticle = controller.getListeArticle().stream()
+			ArticleVente selectArticle = ListesUtil.LISTE_INVENTAIRE.stream()
 			    	 .filter((me) -> codeFieldSelect.getSelectedItem().equals(me.getCodeProduit()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -168,7 +209,7 @@ public class InventoryManagement extends JPanel{
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "enter la nouvelle quantite", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) 
 		{
-			ArticleVente selectArticle = controller.getListeArticle().stream()
+			ArticleVente selectArticle = ListesUtil.LISTE_INVENTAIRE.stream()
 			    	 .filter((me) -> codeFieldSelect.getSelectedItem().equals(me.getCodeProduit()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -198,6 +239,20 @@ public class InventoryManagement extends JPanel{
 		modalPrixField.setText("");
 		modalDescriptionField.setText("");
 		
+		modalTypeDisque.setSelectedIndex(0);
+		modalCodeFilm.setSelectedIndex(-1);
+		modalPrixLocationS.setText("");
+		modalPrixLocationJ.setText("");
+		modalAVendre.setSelected(false);
+
+		modalTypeDisque.setEnabled(false);
+		modalCodeFilm.setEnabled(false);
+		modalPrixLocationS.setEnabled(false);
+		modalPrixLocationJ.setEnabled(false);
+		modalAVendre.setEnabled(false);
+		
+		modalCodeFilm.removeAllItems();
+		ListesUtil.LISTE_FILMS.forEach(e -> modalCodeFilm.addItem(e.getCodeFilm()));
 		
 	    myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 	    
@@ -213,7 +268,7 @@ public class InventoryManagement extends JPanel{
 	    	codeFieldSelect.removeAllItems();
 	    	myPanel.add(codeFieldSelect);
 	    	
-	    	for (ArticleVente m : controller.getListeArticle())
+	    	for (ArticleVente m : ListesUtil.LISTE_INVENTAIRE)
 	    		codeFieldSelect.addItem(m.getCodeProduit());
 		    
 			if(codeFieldSelect.getItemCount() > 0)
@@ -228,7 +283,6 @@ public class InventoryManagement extends JPanel{
 	    myPanel.add(new JLabel("Quantite:"));
 	    myPanel.add(modalQtyField);
 	    
-	    // Display??
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Prix:"));
 	    myPanel.add(modalPrixField);
@@ -236,6 +290,32 @@ public class InventoryManagement extends JPanel{
 	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 	    myPanel.add(new JLabel("Description du Produit:"));
 	    myPanel.add(modalDescriptionField);
+	    
+	    estDisque.setSelected(false);
+	    
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Disque ? "));
+	    myPanel.add(estDisque);
+	    
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Code du Film:"));
+	    myPanel.add(modalCodeFilm);
+
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Type de disque:"));
+	    myPanel.add(modalTypeDisque);
+	    
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Prix location semaine:"));
+	    myPanel.add(modalPrixLocationS);
+
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Prix location journee:"));
+	    myPanel.add(modalPrixLocationJ);
+
+	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+	    myPanel.add(new JLabel("Disque à vendre:"));
+	    myPanel.add(modalAVendre);
 	    
 	    return myPanel;
 		

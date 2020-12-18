@@ -7,11 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.group2.finalproject.ConnexionDB;
+import org.group2.finalproject.ListesUtil;
 import org.group2.finalproject.classes.Location;
 
 public class LocationController {
-	
-	private ArrayList<Location> listeLocations = new ArrayList<>();
 
 	// Louer un film
 	public void louerFilm(Location location) {
@@ -26,6 +25,7 @@ public class LocationController {
 			statement.setString(4, location.getDateRetour());
 			statement.setString(5, location.getDateDu());
 			statement.setDouble(6, location.getMontantRetardDu());
+			statement.execute();
 			updateLocationListe();
 		}
 		catch(SQLException e) {
@@ -36,20 +36,22 @@ public class LocationController {
 		}
 	}
 	
-	// R�server un film
-	public void reserveFilm(Location location) {
+	// Modifier une location
+	public void modifLocation(Location location, boolean update) {
 		// TODO Ajouter le reste
-		String query = "UPDATE Location SET NumeroTelephoneClient=?, CodeDisque=?, DateLouer=?, DateRetour=?, DateDu=?, MontantRetardDu=? WHERE SOMETHING_TO=?";
+		String query = "UPDATE Location SET DateLouer=?, DateRetour=?, DateDu=?, MontantRetardDu=? WHERE NumeroTelephoneClient=? AND CodeDisque=?";
 		try {
 			ConnexionDB.initConnexion();
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
-			statement.setString(1, location.getNumeroTelephone());
-			statement.setString(2, location.getCodeDisque());
-			statement.setString(3, location.getDateLouer());
-			statement.setString(4, location.getDateRetour());
-			statement.setString(5, location.getDateDu());
-			statement.setDouble(6, location.getMontantRetardDu());
-			updateLocationListe();
+			statement.setString(1, location.getDateLouer());
+			statement.setString(2, location.getDateRetour());
+			statement.setString(3, location.getDateDu());
+			statement.setDouble(4, location.getMontantRetardDu());
+			statement.setString(5, location.getNumeroTelephone());
+			statement.setString(6, location.getCodeDisque());
+			statement.execute();
+			if(update)
+				updateLocationListe();
 		}
 		catch(SQLException e) {
 			System.out.print("Modifier une nouvelle location erreur: " + e);
@@ -58,23 +60,6 @@ public class LocationController {
 			ConnexionDB.closeConnection();
 		}
 		
-	}
-	
-	
-	// Retourner un film 
-	public void retourFilm() {
-		String query = "";
-		try {
-			ConnexionDB.initConnexion();
-			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
-			updateLocationListe();
-		}
-		catch(SQLException e) {
-			System.out.print("Ajouter une nouvelle location erreur: " + e);
-		}
-		finally{
-			ConnexionDB.closeConnection();
-		}
 	}
 	
 	// Afficher la liste complete
@@ -88,7 +73,7 @@ public class LocationController {
 			
 			int count = 0;
 			
-		    listeLocations.clear();
+			ListesUtil.LISTE_LOCATIONS.clear();
 			while (result.next()){
 		    	String numTel = result.getString("NumeroTelephoneClient");
 		    	String codeDisque = result.getString("CodeDisque");
@@ -96,7 +81,7 @@ public class LocationController {
 		    	String dateRetour = result.getString("DateRetour");
 		    	String dateDu = result.getString("DateDu");
 		    	Double montantRetardDu = result.getDouble("MontantRetardDu");
-			    listeLocations.add(new Location(numTel, codeDisque, dateLouer, dateRetour, dateDu, montantRetardDu));
+		    	ListesUtil.LISTE_LOCATIONS.add(new Location(numTel, codeDisque, dateLouer, dateRetour, dateDu, montantRetardDu));
 			 
 			    String output = "User #%d: %s - %s - %s - %s - %s";
 			    System.out.println(String.format(output, ++count, numTel, codeDisque, dateLouer, dateRetour, dateDu));
@@ -110,21 +95,16 @@ public class LocationController {
 		}
 	}
 	
-	public ArrayList<Location> getListeLocations()
-	{
-		return listeLocations;
-	}
-	
 	public int calculPrixLocation() {
 		return 0;
 	}
 	
 	public String[][] getListeLocationsData(){
-		String data[][] = new String[listeLocations.size()][6];
+		String data[][] = new String[ListesUtil.LISTE_LOCATIONS.size()][6];
 		
-		for(int i = 0; i < listeLocations.size(); i++)
+		for(int i = 0; i < ListesUtil.LISTE_LOCATIONS.size(); i++)
 		{
-			Location location = listeLocations.get(i);
+			Location location = ListesUtil.LISTE_LOCATIONS.get(i);
 			data[i][0] = location.getNumeroTelephone();
 			data[i][1] = location.getCodeDisque();
 			data[i][2] = location.getDateLouer().toString();

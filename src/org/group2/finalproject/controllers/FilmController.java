@@ -1,19 +1,15 @@
 package org.group2.finalproject.controllers;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.group2.finalproject.ConnexionDB;
+import org.group2.finalproject.ListesUtil;
 import org.group2.finalproject.classes.Film;
 
 public class FilmController {
-	
-	private ArrayList<Film> listeFilm = new ArrayList<>();
 
 	// Ajouter un nouveau film
 	public void ajouterFilm(Film f) {
@@ -100,7 +96,7 @@ public class FilmController {
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
-			listeFilm.clear();
+			ListesUtil.LISTE_FILMS.clear();
 			
 			while(result.next()) {
 				String codeFilm = result.getString("CodeFilm");
@@ -113,7 +109,7 @@ public class FilmController {
 				String directeur = result.getString("Directeur");
 				String scenario = result.getString("Scenario");
 				
-				listeFilm.add(new Film(codeFilm,nom,genre,dateSorite,estNouveau, duree, pays, directeur, scenario));
+				ListesUtil.LISTE_FILMS.add(new Film(codeFilm,nom,genre,dateSorite,estNouveau, duree, pays, directeur, scenario));
 			}
 			System.out.println("Liste des films mise a jour");
 		}
@@ -126,15 +122,11 @@ public class FilmController {
 		
 	}
 	
-	public ArrayList<Film> getListeFilm() {
-		return listeFilm;
-	}
-	
 	public String[][]  getListeFilmsData() {
-		String data[][] = new String[listeFilm.size()][9];
+		String data[][] = new String[ListesUtil.LISTE_FILMS.size()][9];
 		
-		for(int i = 0; i< listeFilm.size(); i++) {
-			Film f = listeFilm.get(i);
+		for(int i = 0; i< ListesUtil.LISTE_FILMS.size(); i++) {
+			Film f = ListesUtil.LISTE_FILMS.get(i);
 			data[i][0] = f.getCodeFilm();
 			data[i][1] = f.getNom();
 			data[i][2] = f.getGenre();

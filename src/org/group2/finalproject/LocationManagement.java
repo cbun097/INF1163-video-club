@@ -1,12 +1,24 @@
 package org.group2.finalproject;
 
-import java.sql.Date;
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import org.group2.finalproject.classes.Disque;
 import org.group2.finalproject.classes.Location;
 import org.group2.finalproject.controllers.LocationController;
 
@@ -16,7 +28,7 @@ public class LocationManagement extends JPanel {
 	private JTable tblFilms;
 	private LocationController controller;
 	private JComboBox<String> modalCodeFieldSelect, modalClientFieldSelect;
-	private JTextField modalCodeDisque, modalNumeroTel, modalRetardMontantDu;
+	private JTextField modalRetardMontantDu;
 	private JTextField modalDateLouerField, modalDateRetourField, modalDateDuField;
 	
 	/**
@@ -29,8 +41,8 @@ public class LocationManagement extends JPanel {
 		tblFilms = new JTable();
 		//tblClient.setBounds(142, 11, 298, 278);
 		
-		modalCodeDisque = new JTextField(5);
-		modalNumeroTel = new JTextField(5);
+		modalCodeFieldSelect = new JComboBox<>();
+		modalClientFieldSelect = new JComboBox<>();
 		modalDateLouerField = new JTextField(5);
 		modalDateRetourField = new JTextField(5);
 		modalDateDuField = new JTextField(5);
@@ -39,7 +51,6 @@ public class LocationManagement extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(tblFilms);
 		scrollPane.setBounds(142, 11, 600, 400);
 		add(scrollPane);
-		//add(tblClient);
 		
 		JButton btnRent = new JButton("Louer");
 		btnRent.setBounds(10, 40, 122, 23);
@@ -50,65 +61,131 @@ public class LocationManagement extends JPanel {
 		btnReturn.setBounds(10, 108, 122, 23);
 		add(btnReturn);
 		btnReturn.addActionListener(e -> retournerDisqueDialog());
+
+		JButton btnMontant = new JButton("Mise a jour Montant");
+		btnMontant.setBounds(10, 176, 122, 23);
+		add(btnMontant);
+		btnMontant.addActionListener(e -> modifMontantDu());
 		
-		JButton btnShowAll = new JButton("Afficher tout");
-		btnShowAll.setBounds(10, 142, 122, 23);
-		add(btnShowAll);
-		btnShowAll.addActionListener(e -> updateTableData());
+		controller.updateLocationListe();
+		updateTableData();
+
 	}
-	
+
 	public void louerDisqueDialog() {
-		JPanel myPanel = LocationPanel();
+		JPanel myPanel = locationPanel(true);
 
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Louer un film", JOptionPane.OK_CANCEL_OPTION);
-		 if (result == JOptionPane.OK_OPTION) 
-		    {
-		    	Location location = new Location(modalNumeroTel.getText(), modalCodeDisque.getText(), modalDateLouerField.getText(), 
-		    			modalDateRetourField.getText(),
-		    			modalDateDuField.getText(), Double.parseDouble(modalRetardMontantDu.getText()));
-		    	controller.louerFilm(location);
-		    	System.out.print("Ajouter loc succ");
-		    	updateTableData();
-		    }
+		if (result == JOptionPane.OK_OPTION) 
+	    {
+	    	Location location = new Location((String)modalClientFieldSelect.getSelectedItem(), (String)modalCodeFieldSelect.getSelectedItem(), modalDateLouerField.getText(), 
+	    			"",
+	    			modalDateDuField.getText(), 0);
+	    	controller.louerFilm(location);
+	    	System.out.print("Ajouter loc succ");
+	    	updateTableData();
+	    }
 	}
 	
 	public void retournerDisqueDialog() {
+		JPanel myPanel = locationPanel(false);
+
+		int result = JOptionPane.showConfirmDialog(null, myPanel, "Retourner un film", JOptionPane.OK_CANCEL_OPTION);
+		if (result == JOptionPane.OK_OPTION) 
+	    {
+	    	Location location = ListesUtil.LISTE_LOCATIONS.stream().filter(e -> 
+	    			e.getNumeroTelephone().equals((String)modalClientFieldSelect.getSelectedItem()) && e.getCodeDisque().equals((String)modalCodeFieldSelect.getSelectedItem())).findAny().orElse(null);
+	    	if(location != null)
+	    	{
+	    		location.setDateRetour(new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
+	    		controller.modifLocation(location, true);
+		    	System.out.print("Ajouter loc succ");
+		    	updateTableData();
+	    	}
+	    }
+	}
+
+	
+	private void modifMontantDu() {
 		
+		ListesUtil.LISTE_LOCATIONS.forEach(e -> {
+			try 
+			{
+				if(e.getDateRetour() != null)
+				{
+					Date start = new SimpleDateFormat("dd-MM-yyyy").parse(e.getDateDu());
+					Date today = new Date();
+					
+					e.setMontantRetardDu(Math.max(0, TimeUnit.DAYS.convert(today.getTime() - start.getTime(), TimeUnit.MILLISECONDS)));
+
+			    	controller.modifLocation(e, false);
+				}
+			} 
+			catch (ParseException e1) 
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		controller.updateLocationListe();
+		
+    	System.out.print("Ajouter loc succ");
+    	updateTableData();
 	}
 	
 	private void updateTableData()
 	{
 		tblFilms.setModel(new DefaultTableModel(controller.getListeLocationsData(), new String[]{"Code Client", "Code Disque","Date Louer", 
-		  "Date Retour", "Date Du"}));
+		  "Date Retour", "Date Du", "Montant Retard"}));
 	}
 	
-	public JPanel LocationPanel() {
+	public JPanel locationPanel(boolean add) {
 		JPanel myPanel = new JPanel();
 	    myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Numero Telephone Clientt:"));
-	    myPanel.add(modalNumeroTel);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Code Disque:"));
-	    myPanel.add(modalCodeDisque);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Date louer(JJ-MM-AAAA):"));
-	    myPanel.add(modalDateLouerField);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Date de retour(JJ-MM-AAAA):"));
-	    myPanel.add(modalDateRetourField);
-
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Date de du(JJ-MM-AAAA):"));
-	    myPanel.add(modalDateDuField);
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(new Date());
+	    modalDateLouerField.setText(new SimpleDateFormat("dd-MM-yyyy").format(c.getTime()));
+	    c.add(Calendar.DATE, 7);
+	    modalDateDuField.setText(new SimpleDateFormat("dd-MM-yyyy").format(c.getTime()));
 	    
-	    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Montant Retard Du:"));
-	    myPanel.add(modalRetardMontantDu);
+	    modalClientFieldSelect.removeAllItems();
+	    modalCodeFieldSelect.removeAllItems();
+	    
+	    ListesUtil.LISTE_MEMBRES.forEach(e -> modalClientFieldSelect.addItem(e.getNumeroTelephone()));
+	    ListesUtil.LISTE_INVENTAIRE.forEach(e -> {
+	    	if(e instanceof Disque)
+	    		modalCodeFieldSelect.addItem(e.getCodeProduit());
+	    });
+
+	    if(add)
+	    {
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Numero Telephone Client:"));
+		    myPanel.add(modalClientFieldSelect);
+
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Code Disque:"));
+		    myPanel.add(modalCodeFieldSelect);
+
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Date louer(JJ-MM-AAAA):"));
+		    myPanel.add(modalDateLouerField);
+
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Date maximal retour(JJ-MM-AAAA):"));
+		    myPanel.add(modalDateDuField);
+	    }
+	    else
+	    {
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Numero Telephone Client:"));
+		    myPanel.add(modalClientFieldSelect);
+
+		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		    myPanel.add(new JLabel("Code Disque:"));
+		    myPanel.add(modalCodeFieldSelect);
+	    }
 
 	    return myPanel;
 	}

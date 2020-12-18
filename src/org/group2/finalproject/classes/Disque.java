@@ -1,29 +1,29 @@
 package org.group2.finalproject.classes;
 
-public class Disque {
+public class Disque extends ArticleVente{
 	
-	Film CodeFilm;
+	Film film;
 	String TypeDeDisque;
 	double PrixLocationSemaine;
 	double PrixLocationJournee;
-	Boolean AVendre;
+	boolean AVendre;
 	
-	public Disque(Film CodeFilm, String typeDeDisque, double prixLocationSemaine, double prixLocationJournee,
-			Boolean aVendre) {
-		super();
-		this.CodeFilm = CodeFilm;
+	public Disque(String codeDisque, Film film, String typeDeDisque, double prixLocationSemaine, double prixLocationJournee,
+			boolean aVendre, int qte, double prixVente) {
+		super(film != null ? film.Nom : "Disque vide???", codeDisque, qte, prixVente, String.format("Disque du film %s", film != null ? film.CodeFilm : "INVALID"));
+		this.film = film;
 		TypeDeDisque = typeDeDisque;
 		PrixLocationSemaine = prixLocationSemaine;
 		PrixLocationJournee = prixLocationJournee;
 		AVendre = aVendre;
 	}
 
-	public Film getCodeFilm() {
-		return CodeFilm;
+	public Film getFilm() {
+		return film;
 	}
 
-	public void setCodeFilm(Film CodeFilm) {
-		this.CodeFilm = CodeFilm;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
 	public String getTypeDeDisque() {
@@ -50,11 +50,11 @@ public class Disque {
 		PrixLocationJournee = prixLocationJournee;
 	}
 
-	public Boolean getAVendre() {
+	public boolean getAVendre() {
 		return AVendre;
 	}
 
-	public void setAVendre(Boolean aVendre) {
+	public void setAVendre(boolean aVendre) {
 		AVendre = aVendre;
 	}
 	

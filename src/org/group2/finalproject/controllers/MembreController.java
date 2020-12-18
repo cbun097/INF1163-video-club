@@ -6,12 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.group2.finalproject.ConnexionDB;
+import org.group2.finalproject.ListesUtil;
 import org.group2.finalproject.classes.Membre;
 
 public class MembreController 
 {
-	private ArrayList<Membre> listeMembres = new ArrayList<>();
-	
 	// Ajouter un nouveau membre
 	public void ajouterMembre(Membre membre)
 	{
@@ -107,7 +106,7 @@ public class MembreController
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
-		    listeMembres.clear();
+		    ListesUtil.LISTE_MEMBRES.clear();
 			while (result.next())
 			{
 			    String numTel = result.getString("NumeroTelephone");
@@ -118,7 +117,7 @@ public class MembreController
 			    Boolean estMembre = result.getBoolean("EstMembre");
 			    int codeSecret = result.getInt("CodeSecret");
 			    
-			    listeMembres.add(new Membre(nom, email, adresseDomicile, numTel, estMembre, 
+			    ListesUtil.LISTE_MEMBRES.add(new Membre(nom, email, adresseDomicile, numTel, estMembre, 
 			    		carteCredit, codeSecret));
 			}
 			
@@ -134,18 +133,13 @@ public class MembreController
 		}
 	}
 	
-	public ArrayList<Membre> getListeMembres()
-	{
-		return listeMembres;
-	}
-	
 	public String[][] getListeMembresData()
 	{
-		String data[][] = new String[listeMembres.size()][7];
+		String data[][] = new String[ListesUtil.LISTE_MEMBRES.size()][7];
 		
-		for(int i = 0; i < listeMembres.size(); i++)
+		for(int i = 0; i < ListesUtil.LISTE_MEMBRES.size(); i++)
 		{
-			Membre m = listeMembres.get(i);
+			Membre m = ListesUtil.LISTE_MEMBRES.get(i);
 			data[i][0] = m.getNumeroTelephone();
 			data[i][1] = m.getNomClient();
 			data[i][2] = m.getAdresseCourriel();

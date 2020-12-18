@@ -66,7 +66,7 @@ public class ClientManagement extends JPanel
 		modalTelFieldSelect.addActionListener(e -> {
 			if(modalTelFieldSelect.getSelectedItem() != null)
 			{
-				Membre membre = controller.getListeMembres().stream()
+				Membre membre = ListesUtil.LISTE_MEMBRES.stream()
 				    	 .filter((me) -> modalTelFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 				    	 .findAny()
 				    	 .orElse(null);
@@ -119,7 +119,7 @@ public class ClientManagement extends JPanel
 	    int result = JOptionPane.showConfirmDialog(null, myPanel, "Modifier un membre", JOptionPane.OK_CANCEL_OPTION);
 	    if (result == JOptionPane.OK_OPTION) 
 	    {
-			Membre selectMembre = controller.getListeMembres().stream()
+			Membre selectMembre = ListesUtil.LISTE_MEMBRES.stream()
 			    	 .filter((me) -> modalTelFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -139,7 +139,7 @@ public class ClientManagement extends JPanel
 	{
 		modalTelFieldSelect.removeAllItems();// = new JComboBox<>();
 	  
-		for (Membre m : controller.getListeMembres()) 
+		for (Membre m : ListesUtil.LISTE_MEMBRES) 
 			modalTelFieldSelect.addItem(m.getNumeroTelephone());
 
 		if(modalTelFieldSelect.getItemCount() > 0)
@@ -153,7 +153,7 @@ public class ClientManagement extends JPanel
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Entrer le code membre a supprimer", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) 
 		{
-			Membre selectMembre = controller.getListeMembres().stream()
+			Membre selectMembre = ListesUtil.LISTE_MEMBRES.stream()
 			    	 .filter((me) -> modalTelFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -203,7 +203,7 @@ public class ClientManagement extends JPanel
 	    	modalTelFieldSelect.removeAllItems();
 	    	myPanel.add(modalTelFieldSelect);
 	    	
-	    	for (Membre m : controller.getListeMembres())
+	    	for (Membre m : ListesUtil.LISTE_MEMBRES)
 	    		modalTelFieldSelect.addItem(m.getNumeroTelephone());
 		    
 			if(modalTelFieldSelect.getItemCount() > 0)

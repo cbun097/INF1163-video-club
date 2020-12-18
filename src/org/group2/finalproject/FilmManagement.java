@@ -94,7 +94,7 @@ public class FilmManagement extends JPanel {
 		modalCodeFieldSelect.addActionListener(e -> {
 			if(modalCodeFieldSelect.getSelectedItem() != null)
 			{
-				Film film = controller.getListeFilm().stream()
+				Film film = ListesUtil.LISTE_FILMS.stream()
 				    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeFilm()))
 				    	 .findAny()
 				    	 .orElse(null);
@@ -134,7 +134,7 @@ public class FilmManagement extends JPanel {
 	    int result = JOptionPane.showConfirmDialog(null, scrollPane, "Modifier un film", JOptionPane.OK_CANCEL_OPTION);
 	    if (result == JOptionPane.OK_OPTION) 
 	    {
-			Film filmSelected = controller.getListeFilm().stream()
+			Film filmSelected = ListesUtil.LISTE_FILMS.stream()
 			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeFilm()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -154,7 +154,7 @@ public class FilmManagement extends JPanel {
 	public void supprimerDialogFilm() {
 		modalCodeFieldSelect.removeAllItems();
 		  
-		for (Film f : controller.getListeFilm()) 
+		for (Film f : ListesUtil.LISTE_FILMS) 
 			modalCodeFieldSelect.addItem(f.getCodeFilm());
 
 		if(modalCodeFieldSelect.getItemCount() > 0)
@@ -168,7 +168,7 @@ public class FilmManagement extends JPanel {
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Entrer le code du film a supprimer", JOptionPane.OK_CANCEL_OPTION);
 		if (result == JOptionPane.OK_OPTION) 
 		{
-			Film filmSelected = controller.getListeFilm().stream()
+			Film filmSelected = ListesUtil.LISTE_FILMS.stream()
 			    	 .filter((me) -> modalCodeFieldSelect.getSelectedItem().equals(me.getCodeFilm()))
 			    	 .findAny()
 			    	 .orElse(null);
@@ -206,7 +206,7 @@ public class FilmManagement extends JPanel {
 	    	modalCodeFieldSelect.removeAllItems();
 	    	myPanel.add(modalCodeFieldSelect);
 	    	
-	    	for (Film f : controller.getListeFilm())
+	    	for (Film f : ListesUtil.LISTE_FILMS)
 	    		modalCodeFieldSelect.addItem(f.getCodeFilm());
 		    
 			if(modalCodeFieldSelect.getItemCount() > 0)
