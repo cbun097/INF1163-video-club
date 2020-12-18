@@ -98,7 +98,8 @@ public class LocationController {
 	public int calculPrixLocation() {
 		return 0;
 	}
-	
+
+	// Données de la liste pour tableau
 	public String[][] getListeLocationsData(){
 		String data[][] = new String[ListesUtil.LISTE_LOCATIONS.size()][6];
 		

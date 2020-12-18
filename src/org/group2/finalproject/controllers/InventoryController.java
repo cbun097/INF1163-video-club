@@ -14,7 +14,6 @@ public class InventoryController {
 	
 	// add new item to inventory
 	public void ajouterArticle(ArticleVente article) {
-		//TODO add rest
 
 		String query = "INSERT INTO ArticleVente (NomProduit, CodeProduit, QuantiteDisponible, Prix, DescriptionProduit) VALUES (?, ?, ?, ?, ?)";
 
@@ -44,7 +43,7 @@ public class InventoryController {
 				statement.executeUpdate();
 			}
 			
-//			updateListeArticle();
+			updateListeArticle("");
 		}
 		catch(SQLException e) 
 		{
@@ -55,10 +54,9 @@ public class InventoryController {
 			ConnexionDB.closeConnection();
 		}
 	}
+	
 	// modify an existing item in the inventory
 	public void modifierArticle(ArticleVente article) {
-		//TODO add rest
-
 		String query = "UPDATE ArticleVente SET NomProduit=?, QuantiteDisponible=?, Prix=?, DescriptionProduit=? WHERE CodeProduit=?";
 		
 		try
@@ -72,7 +70,7 @@ public class InventoryController {
 			statement.setString(5, article.getDescriptionProduit());
 			statement.executeUpdate();
 			System.out.println("Article ajoute avec succes!");
-//			updateListeArticle();
+			updateListeArticle("");
 		}
 		catch(SQLException e) 
 		{
@@ -83,10 +81,9 @@ public class InventoryController {
 			ConnexionDB.closeConnection();
 		}
 	}
+	
 	// remove an item from the inventory
 	public void supprimerArticle(ArticleVente article) {
-		//TODO add rest
-
 		String query = "DELETE FROM ArticleVente WHERE CodeProduit=?";
 
 		try 
@@ -104,7 +101,7 @@ public class InventoryController {
 			}
 				
 			System.out.println("Membre supprimï¿½ avec succï¿½s!");
-//			updateListeArticle();
+			updateListeArticle("");
 		}
 		catch(SQLException e)
 		{
@@ -128,8 +125,8 @@ public class InventoryController {
 			statement.setString(2, article.getCodeProduit());
 			statement.setInt(3, article.getQuantite());
 			statement.executeUpdate();
-			System.out.println("Article ajoutï¿½ avec succï¿½s!");
-//			updateListeArticle();
+			System.out.println("Article ajoute avec succes!");
+			updateListeArticle("");
 		}
 		catch(SQLException e) 
 		{
@@ -141,15 +138,11 @@ public class InventoryController {
 		}
 	}
 	
-//	public void updateListeArticle() {
-//		updateListeArticle("");
-//	}
 	public void updateListeArticle(String para) {
 
 		String query = "SELECT * FROM ArticleVente LEFT JOIN Disque ON ArticleVente.CodeProduit = Disque.CodeDisque";
 		if (para!=null && !para.isEmpty()) 
 			query += " where NomProduit like '%" + para + "%'";
-		
 
 		try
 		{ 
@@ -197,7 +190,8 @@ public class InventoryController {
 			ConnexionDB.closeConnection();
 		}
 	}
-	
+
+	// Données de la liste pour tableau
 	public String[][] getListeArticleData()
 	{
 		String data[][] = new String[ListesUtil.LISTE_INVENTAIRE.size()][10];

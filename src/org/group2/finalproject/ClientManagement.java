@@ -63,6 +63,7 @@ public class ClientManagement extends JPanel
 		modalCodeSecret = new JTextField(5);
 		
 		modalTelFieldSelect = new JComboBox<>();
+		// Ajuster les données du MODAL de modification
 		modalTelFieldSelect.addActionListener(e -> {
 			if(modalTelFieldSelect.getSelectedItem() != null)
 			{
@@ -79,15 +80,15 @@ public class ClientManagement extends JPanel
 			}
 		});
 		
-		// search to find film in db
-				search = new JTextField("");
-				search.setBounds(142, 11, 450, 25);
-				add(search);
-				
-				JButton btnSearch = new JButton("recherche");
-				btnSearch.setBounds(600, 12, 122, 25);
-				add(btnSearch);
-				btnSearch.addActionListener(e -> rechercheDialogMembre());
+		// Recherche par nom
+		search = new JTextField("");
+		search.setBounds(142, 11, 450, 25);
+		add(search);
+		
+		JButton btnSearch = new JButton("Rechercher");
+		btnSearch.setBounds(600, 12, 122, 25);
+		add(btnSearch);
+		btnSearch.addActionListener(e -> rechercheDialogMembre());
 				
 	}
 	
@@ -119,6 +120,7 @@ public class ClientManagement extends JPanel
 	    int result = JOptionPane.showConfirmDialog(null, myPanel, "Modifier un membre", JOptionPane.OK_CANCEL_OPTION);
 	    if (result == JOptionPane.OK_OPTION) 
 	    {
+	    	// Trouver le mombre dans la liste
 			Membre selectMembre = ListesUtil.LISTE_MEMBRES.stream()
 			    	 .filter((me) -> modalTelFieldSelect.getSelectedItem().equals(me.getNumeroTelephone()))
 			    	 .findAny()
@@ -137,11 +139,13 @@ public class ClientManagement extends JPanel
 	// Methode pour supprimer dialog membre
 	private void supprimerDialogMembre() 
 	{
-		modalTelFieldSelect.removeAllItems();// = new JComboBox<>();
+		modalTelFieldSelect.removeAllItems();
 	  
+		// Ajouter les clés des membres
 		for (Membre m : ListesUtil.LISTE_MEMBRES) 
 			modalTelFieldSelect.addItem(m.getNumeroTelephone());
 
+		// Selectionné le premier item
 		if(modalTelFieldSelect.getItemCount() > 0)
 			modalTelFieldSelect.setSelectedIndex(tblClient.getSelectedRow() >= 0 ? tblClient.getSelectedRow() : 0);
 

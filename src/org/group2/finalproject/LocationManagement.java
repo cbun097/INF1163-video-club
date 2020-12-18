@@ -152,12 +152,15 @@ public class LocationManagement extends JPanel {
 	    modalClientFieldSelect.removeAllItems();
 	    modalCodeFieldSelect.removeAllItems();
 	    
+    	// Ajouter tous les membres à la liste disponible
 	    ListesUtil.LISTE_MEMBRES.forEach(e -> modalClientFieldSelect.addItem(e.getNumeroTelephone()));
+	    // Ajouter tous les disques disponibles
 	    ListesUtil.LISTE_INVENTAIRE.forEach(e -> {
 	    	if(e instanceof Disque)
 	    		modalCodeFieldSelect.addItem(e.getCodeProduit());
 	    });
 
+	    // si c'est le modal Ajouter
 	    if(add)
 	    {
 		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer
@@ -176,6 +179,7 @@ public class LocationManagement extends JPanel {
 		    myPanel.add(new JLabel("Date maximal retour(JJ-MM-AAAA):"));
 		    myPanel.add(modalDateDuField);
 	    }
+	    // Si c'est le modal de retour
 	    else
 	    {
 		    myPanel.add(Box.createHorizontalStrut(15)); // a spacer

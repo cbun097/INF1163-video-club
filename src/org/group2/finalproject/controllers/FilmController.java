@@ -122,6 +122,7 @@ public class FilmController {
 		
 	}
 	
+	// Données de la liste pour tableau
 	public String[][]  getListeFilmsData() {
 		String data[][] = new String[ListesUtil.LISTE_FILMS.size()][9];
 		

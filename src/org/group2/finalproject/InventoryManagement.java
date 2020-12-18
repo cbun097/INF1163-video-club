@@ -57,22 +57,22 @@ public class InventoryManagement extends JPanel{
 		add(scrollPane);
 		//add(tblClient);
 		
-		JButton btnAdd = new JButton("ajouter item");
+		JButton btnAdd = new JButton("Ajouter");
 		btnAdd.setBounds(10, 40, 122, 23);
 		add(btnAdd);
 		btnAdd.addActionListener(e -> ajouterDialogItem());
 		
-		JButton btnModItem = new JButton("modifier item");
+		JButton btnModItem = new JButton("Modifier");
 		btnModItem.setBounds(10, 74, 122, 23);
 		add(btnModItem);
 		btnModItem.addActionListener(e -> modifierDialogItem());
 		
-		JButton btnRemove = new JButton("enlever item");
+		JButton btnRemove = new JButton("Supprimer");
 		btnRemove.setBounds(10, 108, 122, 23);
 		add(btnRemove);
 		btnRemove.addActionListener(e -> supprimerDialogArticle());
 		
-		JButton btnQty = new JButton("Ajuster Qty");
+		JButton btnQty = new JButton("Ajuster la quantité");
 		btnQty.setBounds(10, 142, 122, 23);
 		add(btnQty);
 		btnQty.addActionListener(e -> ajusterQty());
@@ -81,7 +81,7 @@ public class InventoryManagement extends JPanel{
 		search.setBounds(142, 11, 450, 25);
 		add(search);
 		
-		JButton btnSearch = new JButton("recherche");
+		JButton btnSearch = new JButton("Rechercher");
 		btnSearch.setBounds(600, 12, 122, 25);
 		add(btnSearch);
 		btnSearch.addActionListener(e -> rechercheDialogItem());

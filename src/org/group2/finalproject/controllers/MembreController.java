@@ -132,7 +132,8 @@ public class MembreController
 			ConnexionDB.closeConnection();
 		}
 	}
-	
+
+	// Données de la liste pour tableau
 	public String[][] getListeMembresData()
 	{
 		String data[][] = new String[ListesUtil.LISTE_MEMBRES.size()][7];
