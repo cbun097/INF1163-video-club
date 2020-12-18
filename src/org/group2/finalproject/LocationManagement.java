@@ -20,7 +20,7 @@ public class LocationManagement extends JPanel {
 	private JTextField modalDateLouerField, modalDateRetourField, modalDateDuField;
 	
 	/**
-	 * Create the panel.
+	 * Create the panel.d
 	 */
 	public LocationManagement() {
 		setLayout(null);

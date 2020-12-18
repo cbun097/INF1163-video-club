@@ -1,48 +1,65 @@
 package org.group2.finalproject.classes;
 
 public class ArticleVente {
-	String CodeProduit;
-	double Prix;
-	int QuantiteDisponible;
-	String DescriptionProduit;
+
 	
-	public ArticleVente(String codeProduit, double prix, int quantiteDisponible, String descriptionProduit) {
+	String nomProduit;
+	String codeProduit;
+	int quantite;
+	double prix;
+	String descriptionProduit;
+	
+	public ArticleVente(String nomProduit, String codeProduit, int quantite, double prix, String descriptionProduit) {
 		super();
-		CodeProduit = codeProduit;
-		Prix = prix;
-		QuantiteDisponible = quantiteDisponible;
-		DescriptionProduit = descriptionProduit;
+		
+		this.nomProduit = nomProduit;
+		this.codeProduit = codeProduit;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.descriptionProduit = descriptionProduit;
+	}
+	public String getNomProduit() {
+		return nomProduit;
+	}
+	public void setNomProduit(String nomProduit) {
+		this.nomProduit = nomProduit;
 	}
 
 	public String getCodeProduit() {
-		return CodeProduit;
+		return codeProduit;
 	}
 
 	public void setCodeProduit(String codeProduit) {
-		CodeProduit = codeProduit;
+		this.codeProduit = codeProduit;
 	}
 
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
 	public double getPrix() {
-		return Prix;
+		return prix;
 	}
-
+	
 	public void setPrix(double prix) {
-		Prix = prix;
+		this.prix = prix;
 	}
-
-	public int getQuantiteDisponible() {
-		return QuantiteDisponible;
-	}
-
-	public void setQuantiteDisponible(int quantiteDisponible) {
-		QuantiteDisponible = quantiteDisponible;
-	}
-
+	
 	public String getDescriptionProduit() {
-		return DescriptionProduit;
+		return descriptionProduit;
+	}
+	
+	public void setDescriptionProduit(String descriptionProduit) {
+		this.descriptionProduit = descriptionProduit;
 	}
 
-	public void setDescriptionProduit(String descriptionProduit) {
-		DescriptionProduit = descriptionProduit;
+	@Override
+	public String toString() {
+
+		return "ArticleVente [nomProduit=" + nomProduit + ", codeProduit=" + codeProduit + ", quantite=" + quantite + ", prix=" + prix + ", descriptionProduit=" + descriptionProduit + "]";
+
 	}
 }
