@@ -30,8 +30,8 @@ public class MembreController
 			statement.setBoolean(6, membre.getEstMembre());
 			statement.setInt(7, membre.getCodeSecret());
 			statement.executeUpdate();
-			System.out.println("Membre ajouté avec succès!");
-			updateMembreListe();
+			System.out.println("Membre ajoutï¿½ avec succï¿½s!");
+//			updateMembreListe();
 		}
 		catch(SQLException e) 
 		{
@@ -59,8 +59,8 @@ public class MembreController
 			statement.setInt(6, membre.getCodeSecret());
 			statement.setString(7, membre.getNumeroTelephone());
 			statement.executeUpdate();
-			System.out.println("Membre modifié avec succès!");
-			updateMembreListe();
+			System.out.println("Membre modifiï¿½ avec succï¿½s!");
+//			updateMembreListe();
 		}
 		catch(SQLException e) 
 		{
@@ -82,8 +82,8 @@ public class MembreController
 			PreparedStatement statement = ConnexionDB.getConnexion().prepareStatement(query);
 			statement.setString(1, membre.getNumeroTelephone());
 			statement.executeUpdate();
-			System.out.println("Membre supprimé avec succès!");
-			updateMembreListe();
+			System.out.println("Membre supprimï¿½ avec succï¿½s!");
+//			updateMembreListe();
 		}
 		catch(SQLException e)
 		{
@@ -96,8 +96,11 @@ public class MembreController
 	}
 	
 	// Afficher la liste complete
-	public void updateMembreListe() {
-		String query = "SELECT * FROM Membre";
+	public void updateMembreListe(String para) {
+		
+		String query = "SELECT * FROM Membre ";
+		if (para!=null && !para.isEmpty()) 
+			query += " where NomClient like '%" + para + "%'";
 		try
 		{ 
 			ConnexionDB.initConnexion();
@@ -115,11 +118,11 @@ public class MembreController
 			    Boolean estMembre = result.getBoolean("EstMembre");
 			    int codeSecret = result.getInt("CodeSecret");
 			    
-			    listeMembres.add(new Membre(numTel, nom, email, adresseDomicile, estMembre, 
+			    listeMembres.add(new Membre(nom, email, adresseDomicile, numTel, estMembre, 
 			    		carteCredit, codeSecret));
 			}
 			
-			System.out.println("Liste des membres mise à jour");
+			System.out.println("Liste des membres mise ï¿½ jour");
 		}
 		catch(SQLException e)
 		{
